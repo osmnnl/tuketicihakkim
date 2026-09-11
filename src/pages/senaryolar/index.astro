@@ -1,0 +1,79 @@
+---
+import Base from "../../layouts/Base.astro";
+import SearchBox from "../../components/SearchBox.astro";
+import VerdictBadge from "../../components/VerdictBadge.astro";
+import { cases, categories } from "../../lib/cases";
+---
+
+<Base
+  title="Tüm senaryolar — Tüketici Hakkım"
+  description={`Ayıplı mal, iade, kargo, garanti, abonelik ve seyahat başlıklarında ${cases.length} tüketici senaryosu; her biri kanun maddesi ve başvuru adımlarıyla.`}
+  path="/senaryolar/"
+>
+  <div class="wrap">
+    <section style="padding:44px 0 0">
+      <p class="eyebrow">Senaryo sözlüğü</p>
+      <h1 style="font-size:clamp(28px,5vw,40px);letter-spacing:-.03em;margin:10px 0 12px">
+        A'dan Z'ye tüketici senaryoları
+      </h1>
+      <p style="color:var(--fg-dim);max-width:66ch;margin:0 0 26px">
+        Sözlükte toplam <strong>{cases.length}</strong> senaryo kayıtlı. Kategoriyle daraltabilir
+        veya doğrudan arayabilirsiniz.
+      </p>
+      <SearchBox placeholder="Senaryo ara…" />
+
+      <div class="filterbar" id="filters">
+        <button type="button" data-cat="*" aria-pressed="true">Tümü</button>
+        {categories.map((c) => <button type="button" data-cat={c} aria-pressed="false">{c}</button>)}
+      </div>
+
+      <p class="count" id="count">{cases.length} senaryo gösteriliyor</p>
+    </section>
+
+    {categories.map((cat) => (
+      <section class="block" style="padding:26px 0 0" data-group={cat} id={cat}>
+        <div class="block-head"><h2>{cat}</h2></div>
+        <div class="grid grid-2">
+          {cases.filter((c) => c.category === cat).map((c) => (
+            <a class="card" href={`/${c.slug}/`}>
+              <VerdictBadge verdict={c.verdict} />
+              <h3>{c.title}</h3>
+              <p>{c.summary}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+    <div style="height:40px"></div>
+  </div>
+
+  <script is:inline>
+    const groups = [...document.querySelectorAll("[data-group]")];
+    const countEl = document.getElementById("count");
+    const total = groups.reduce((n, g) => n + g.querySelectorAll(".card").length, 0);
+
+    document.getElementById("filters")?.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-cat]");
+      if (!btn) return;
+      const cat = btn.dataset.cat;
+      document.querySelectorAll("#filters button").forEach((b) =>
+        b.setAttribute("aria-pressed", String(b === btn))
+      );
+      let shown = 0;
+      groups.forEach((g) => {
+        const match = cat === "*" || g.dataset.group === cat;
+        g.hidden = !match;
+        if (match) shown += g.querySelectorAll(".card").length;
+      });
+      countEl.textContent = `${shown} senaryo gösteriliyor${cat === "*" ? "" : ` · ${cat}`}`;
+    });
+
+    // #kategori ile gelindiğinde o filtreyi uygula
+    const hash = decodeURIComponent(location.hash.slice(1));
+    if (hash) {
+      const btn = [...document.querySelectorAll("#filters button")].find((b) => b.dataset.cat === hash);
+      btn?.click();
+    }
+    countEl.textContent = `${total} senaryo gösteriliyor`;
+  </script>
+</Base>

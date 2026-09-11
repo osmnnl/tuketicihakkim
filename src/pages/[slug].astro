@@ -1,0 +1,168 @@
+---
+import Base from "../layouts/Base.astro";
+import SearchBox from "../components/SearchBox.astro";
+import CaseCard from "../components/CaseCard.astro";
+import VerdictBadge from "../components/VerdictBadge.astro";
+import { cases, related, neighbours, verdictLabel, type Case } from "../lib/cases";
+
+export function getStaticPaths() {
+  return cases.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+interface Props { item: Case }
+const { item } = Astro.props as Props;
+const rel = related(item);
+const { prev, next } = neighbours(item);
+const path = `/${item.slug}/`;
+
+const dateTr = new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", year: "numeric" })
+  .format(new Date(item.updated));
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Ana sayfa", item: "https://tuketicihakkim.com/" },
+        { "@type": "ListItem", position: 2, name: "Senaryolar", item: "https://tuketicihakkim.com/senaryolar/" },
+        { "@type": "ListItem", position: 3, name: item.title },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: `${verdictLabel[item.verdict]}. ${item.summary}` },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<Base
+  title={`${item.title} — Hakkım var mı? | Tüketici Hakkım`}
+  description={`${item.question} ${verdictLabel[item.verdict]}. ${item.summary}`}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <div class="wrap narrow">
+    <nav class="crumbs">
+      <a href="/">Ana sayfa</a><span>/</span>
+      <a href="/senaryolar/">Senaryolar</a><span>/</span>
+      {item.category}
+    </nav>
+
+    <header class="detail-head">
+      <p class="eyebrow">{item.category}</p>
+      <h1>{item.question}</h1>
+      <div class="verdict-line">
+        <VerdictBadge verdict={item.verdict} large />
+        <strong style="font-size:17px">{verdictLabel[item.verdict]}</strong>
+      </div>
+      <p class="detail-summary">{item.summary}</p>
+      <div class="meta-row">
+        <span>Son güncelleme: {dateTr}</span>
+        <button class="copy-btn" data-copy>Bağlantıyı kopyala</button>
+      </div>
+    </header>
+
+    <section class="sec">
+      <h2>Durum ne anlama geliyor</h2>
+      <p>{item.situation}</p>
+    </section>
+
+    <section class="sec">
+      <h2>Hukuki değerlendirme</h2>
+      <p>{item.legal}</p>
+    </section>
+
+    <section class="sec">
+      <h2>Talep edebilecekleriniz</h2>
+      <ul class="checks">
+        {item.rights.map((r) => <li>{r}</li>)}
+      </ul>
+    </section>
+
+    <section class="sec">
+      <h2>Süre ve başvuru mercii</h2>
+      <dl class="factbox">
+        <div class="fact">
+          <dt>Süre</dt>
+          <dd>{item.deadline}</dd>
+        </div>
+        <div class="fact">
+          <dt>Nereye başvurulur</dt>
+          <dd>{item.authority}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="sec">
+      <h2>Ne yapmalısınız</h2>
+      <ol class="steps">
+        {item.steps.map((s) => <li>{s}</li>)}
+      </ol>
+    </section>
+
+    <section class="sec">
+      <h2>Dayanak mevzuat</h2>
+      <ul class="basis">
+        {item.basis.map((b) => (
+          <li>
+            <b>{b.law}</b>{b.article !== "-" && <> <code>{b.article}</code></>} — {b.note}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {rel.length > 0 && (
+      <section class="sec">
+        <h2>Benzer senaryolar</h2>
+        <div class="grid grid-2">
+          {rel.map((r) => <CaseCard item={r} showSummary={false} />)}
+        </div>
+      </section>
+    )}
+
+    <div class="cta">
+      <div>
+        <h3>Durumunuz tam olarak buna uymuyor mu?</h3>
+        <p>
+          Süreler ve seçimlik haklar olayın ayrıntısına göre değişir. Hak kaybı yaşamamak için
+          süre dolmadan bir avukata danışın.
+        </p>
+      </div>
+      <a class="btn btn-ghost" href="/basvuru-rehberi/">Başvuru rehberi</a>
+    </div>
+
+    <nav class="pager">
+      {prev ? (
+        <a href={`/${prev.slug}/`}><small>← Önceki</small>{prev.title}</a>
+      ) : <span />}
+      {next ? (
+        <a class="next" href={`/${next.slug}/`}><small>Sonraki →</small>{next.title}</a>
+      ) : <span />}
+    </nav>
+
+    <section class="sec" style="border-bottom:0">
+      <h2>Başka bir durumu ara</h2>
+      <SearchBox placeholder="Örn. garanti, iade, fatura…" />
+    </section>
+  </div>
+
+  <script is:inline>
+    document.querySelector("[data-copy]")?.addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      try {
+        await navigator.clipboard.writeText(location.href);
+        const old = btn.textContent;
+        btn.textContent = "Kopyalandı ✓";
+        setTimeout(() => (btn.textContent = old), 1800);
+      } catch {}
+    });
+  </script>
+</Base>

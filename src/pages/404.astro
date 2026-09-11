@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro";
+import SearchBox from "../components/SearchBox.astro";
+---
+<Base title="Sayfa bulunamadı — Tüketici Hakkım" description="Aradığınız sayfa bulunamadı." path="/404/">
+  <div class="wrap narrow" style="padding:80px 0;text-align:center">
+    <p class="eyebrow">404</p>
+    <h1 style="font-size:clamp(28px,5vw,40px);letter-spacing:-.03em;margin:10px 0 12px">Sayfa bulunamadı</h1>
+    <p style="color:var(--fg-dim);margin:0 0 28px">
+      Aradığınız adres taşınmış olabilir. Senaryo sözlüğünden arayarak devam edebilirsiniz.
+    </p>
+    <SearchBox />
+    <p style="margin-top:26px"><a href="/senaryolar/">Tüm senaryolara göz atın →</a></p>
+  </div>
+</Base>

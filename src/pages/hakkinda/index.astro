@@ -1,0 +1,63 @@
+---
+import Base from "../../layouts/Base.astro";
+import { cases, categories } from "../../lib/cases";
+---
+
+<Base
+  title="Hakkında — Tüketici Hakkım"
+  description="Tüketici Hakkım nedir, veriler nereden gelir, nasıl güncellenir ve sınırları nelerdir?"
+  path="/hakkinda/"
+>
+  <div class="wrap narrow">
+    <section style="padding:44px 0 0">
+      <p class="eyebrow">Hakkında</p>
+      <h1 style="font-size:clamp(28px,5vw,40px);letter-spacing:-.03em;margin:10px 0 14px">
+        Bu site ne yapar?
+      </h1>
+      <p style="color:var(--fg-dim);max-width:68ch">
+        Tüketici Hakkım, günlük hayatta karşılaşılan tüketici sorunlarını tek tek senaryolara ayırır ve
+        her biri için tek bir soruyu cevaplar: <strong>bu durumda hakkım var mı?</strong>
+        Cevap; kanun maddesi, süre ve somut başvuru adımlarıyla birlikte verilir.
+      </p>
+    </section>
+
+    <section class="sec">
+      <h2>Kapsam</h2>
+      <p>
+        Şu an {cases.length} senaryo, {categories.length} başlık altında kayıtlı:
+        {categories.join(", ")}.
+      </p>
+    </section>
+
+    <section class="sec">
+      <h2>Kaynaklar</h2>
+      <ul class="checks">
+        <li>6502 sayılı Tüketicinin Korunması Hakkında Kanun</li>
+        <li>Mesafeli Sözleşmeler, Abonelik Sözleşmeleri, Garanti Belgesi ve Satış Sonrası Hizmetler yönetmelikleri</li>
+        <li>Sektörel düzenlemeler (örn. havayolu yolcu hakları yönetmeliği)</li>
+        <li>Ticaret Bakanlığı tebliğ ve duyuruları</li>
+      </ul>
+    </section>
+
+    <section class="sec">
+      <h2>Sınırları</h2>
+      <p>
+        Burada yer alan içerik <strong>hukuki danışmanlık değildir</strong> ve avukat–müvekkil ilişkisi
+        doğurmaz. Mevzuat değişir, parasal sınırlar her yıl güncellenir ve somut olayın ayrıntısı
+        sonucu değiştirebilir. Süre kaybı riski taşıyan durumlarda bir avukata danışın.
+      </p>
+      <p>
+        Hatalı veya eksik bulduğunuz bir kayıt varsa proje deposundan issue açarak bildirebilirsiniz.
+      </p>
+    </section>
+
+    <section class="sec" style="border-bottom:0">
+      <h2>Teknik</h2>
+      <p>
+        Astro ile üretilen tamamen statik bir site; sunucu tarafı kod, veritabanı veya çerez yoktur.
+        Arama tarayıcıda çalışır. İçerik tek bir JSON dosyasında tutulur.
+      </p>
+    </section>
+    <div style="height:40px"></div>
+  </div>
+</Base>

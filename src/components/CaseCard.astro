@@ -1,0 +1,11 @@
+---
+import VerdictBadge from "./VerdictBadge.astro";
+import type { Case } from "../lib/cases";
+interface Props { item: Case; showSummary?: boolean }
+const { item, showSummary = true } = Astro.props;
+---
+<a class="card" href={`/${item.slug}/`}>
+  <VerdictBadge verdict={item.verdict} />
+  <h3>{item.title}</h3>
+  {showSummary && <p>{item.summary}</p>}
+</a>

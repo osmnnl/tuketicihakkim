@@ -1,0 +1,6 @@
+---
+import { verdictShort, type Verdict } from "../lib/cases";
+interface Props { verdict: Verdict; large?: boolean }
+const { verdict, large = false } = Astro.props;
+---
+<span class={`badge badge-${verdict}${large ? " badge-lg" : ""}`}>{verdictShort[verdict]}</span>

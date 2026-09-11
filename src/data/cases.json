@@ -1,0 +1,818 @@
+[
+  {
+    "slug": "ayakkabi-tabani-ayrildi",
+    "title": "Ayakkabının tabanı kısa sürede ayrıldı",
+    "question": "Ayakkabımın tabanı birkaç ay içinde ayrıldı, hakkım var mı?",
+    "verdict": "var",
+    "category": "Ayıplı Mal",
+    "aliases": ["ayakkabı taban ayrıldı", "ayakkabı söküldü iade", "bot tabanı çıktı"],
+    "summary": "Normal kullanımda kısa sürede oluşan taban ayrılması ayıp sayılır; teslim tarihinden itibaren 2 yıl içinde seçimlik haklarınızı kullanabilirsiniz.",
+    "situation": "Ürünün olağan kullanım ömrü ve tanıtılan nitelikleri dikkate alındığında, normal kullanım koşullarında kısa sürede ortaya çıkan taban ayrılması, ürünün sözleşmede kararlaştırılan niteliğe aykırı olduğunu gösterir. Bu, 6502 sayılı Kanun anlamında \"ayıplı mal\" tanımına girer.",
+    "legal": "Teslim tarihinden itibaren altı ay içinde ortaya çıkan ayıpların teslim anında var olduğu kabul edilir; ispat yükü satıcıdadır. Altı aydan sonra ortaya çıkan ayıplarda ise ayıbın teslim anında var olduğunu tüketicinin ispatlaması beklenir — bu noktada bilirkişi/servis raporu belirleyicidir.",
+    "rights": [
+      "Satılanı geri verip sözleşmeden dönme (bedel iadesi)",
+      "Ayıp oranında bedel indirimi",
+      "Ücretsiz onarım",
+      "Ayıpsız misli ile değiştirme"
+    ],
+    "deadline": "Teslim tarihinden itibaren 2 yıl (kanunda daha uzun süre öngörülmedikçe). Satıcının ağır kusuru veya hile ile ayıbı gizlemesi hâlinde zamanaşımı işlemez.",
+    "authority": "Önce satıcıya yazılı başvuru, sonuç alınamazsa Tüketici Hakem Heyeti (parasal sınır altında) veya Tüketici Mahkemesi.",
+    "steps": [
+      "Ürünü satın aldığınız satıcıya başvurun; talebinizi (onarım / değişim / iade / bedel indirimi) açıkça yazın.",
+      "Faturayı, varsa garanti belgesini ve ürünün fotoğraflarını saklayın.",
+      "Yazılı başvuruyu e-posta, KEP veya iadeli taahhütlü mektupla yapın — tarih ve içerik kanıtı önemlidir.",
+      "Satıcı talebi karşılamazsa Tüketici Hakem Heyeti'ne (e-Devlet üzerinden) başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.8", "note": "Ayıplı mal tanımı" },
+      { "law": "6502 sayılı TKHK", "article": "m.10", "note": "İlk altı ayda ayıbın teslim anında var sayılması" },
+      { "law": "6502 sayılı TKHK", "article": "m.11", "note": "Tüketicinin seçimlik hakları" },
+      { "law": "6502 sayılı TKHK", "article": "m.12", "note": "İki yıllık zamanaşımı" }
+    ],
+    "related": ["telefon-ekrani-kendiliginden-bozuldu", "urun-ucuncu-kez-ayni-arizayi-verdi", "ikinci-el-urun-ayipli-cikti"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "telefon-ekrani-kendiliginden-bozuldu",
+    "title": "Telefonun ekranı kendiliğinden bozuldu",
+    "question": "Telefonumun ekranı düşürmeden bozuldu, ücretsiz onarım hakkım var mı?",
+    "verdict": "var",
+    "category": "Ayıplı Mal",
+    "aliases": ["telefon ekran arızası garanti", "ekranda çizgi çıktı", "telefon kendiliğinden bozuldu"],
+    "summary": "Kullanıcı kusuru bulunmayan üretim kaynaklı arızalarda ücretsiz onarım dahil dört seçimlik hakkınız vardır; servis raporu belirleyicidir.",
+    "situation": "Fiziksel darbe, sıvı teması veya yetkisiz müdahale bulunmayan ekran arızaları üretim kaynaklı kabul edilir. Servisin \"kullanıcı kaynaklı\" tespiti bağlayıcı değildir; itiraz edebilir, bağımsız bilirkişi talep edebilirsiniz.",
+    "legal": "Ücretsiz onarım talep edilmesi hâlinde işçilik masrafı, değiştirilen parça bedeli ve benzeri hiçbir ad altında tüketiciden ücret istenemez. Onarım süresi azami 20 iş günüdür; bu süre aşılırsa ürünün ayıpsız misli ile değiştirilmesi veya bedel iadesi talep edilebilir.",
+    "rights": [
+      "Ücretsiz onarım (işçilik ve parça dahil)",
+      "Ayıpsız misli ile değiştirme",
+      "Bedel iadesi (sözleşmeden dönme)",
+      "Ayıp oranında bedel indirimi"
+    ],
+    "deadline": "Teslimden itibaren 2 yıl. Onarım için azami süre 20 iş günü; aşılırsa değişim/iade hakkı doğar.",
+    "authority": "Yetkili servis → satıcı → Tüketici Hakem Heyeti / Tüketici Mahkemesi.",
+    "steps": [
+      "Cihazı yetkili servise teslim edin ve servis giriş formunu (arıza tanımı yazılı) mutlaka alın.",
+      "Servis, arızayı kullanıcı kaynaklı sayarsa gerekçeli raporu yazılı olarak isteyin.",
+      "20 iş günü içinde onarım tamamlanmazsa değişim veya iade talebinizi yazılı iletin.",
+      "Sonuç alınamazsa Tüketici Hakem Heyeti'ne başvurun; bilirkişi incelemesi talep edin."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.11", "note": "Seçimlik haklar" },
+      { "law": "Satış Sonrası Hizmetler Yönetmeliği", "article": "-", "note": "Azami onarım süresi ve servis yükümlülükleri" },
+      { "law": "6502 sayılı TKHK", "article": "m.58", "note": "Garanti belgesi yükümlülüğü" }
+    ],
+    "related": ["ayakkabi-tabani-ayrildi", "urun-ucuncu-kez-ayni-arizayi-verdi", "servis-20-is-gununde-teslim-etmedi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "urun-ucuncu-kez-ayni-arizayi-verdi",
+    "title": "Ürün garanti süresinde tekrar tekrar arızalandı",
+    "question": "Aynı arıza defalarca tekrarladı, ürünü iade edebilir miyim?",
+    "verdict": "var",
+    "category": "Ayıplı Mal",
+    "aliases": ["sürekli arıza yapan ürün", "aynı arıza tekrar etti", "garanti süresinde tekrar bozuldu"],
+    "summary": "Garanti süresi içinde arızanın tekrarlanması veya arızaların ürünü kullanılamaz hâle getirmesi durumunda ücretsiz değişim, bedel iadesi veya bedel indirimi talep edebilirsiniz.",
+    "situation": "Aynı arızanın belirli sayıda tekrarlanması, farklı arızaların üst üste çıkması veya azami onarım süresinin aşılması hâllerinde artık \"onarım\" yeterli bir çözüm sayılmaz.",
+    "legal": "Bu hâllerde tüketici; ücretsiz değişim, bedel iadesi veya ayıp oranında bedel indirimi taleplerinden birini seçebilir. Satıcı, üretici ve ithalatçı bu talepten müteselsilen sorumludur.",
+    "rights": [
+      "Ayıpsız misli ile ücretsiz değişim",
+      "Bedel iadesi",
+      "Ayıp oranında bedel indirimi"
+    ],
+    "deadline": "Garanti süresi (asgari 2 yıl) içinde. Servis kayıtları bu hakkın ispatı için kritiktir.",
+    "authority": "Satıcı / üretici / ithalatçı (müteselsil sorumluluk) → Tüketici Hakem Heyeti / Tüketici Mahkemesi.",
+    "steps": [
+      "Tüm servis giriş-çıkış formlarını tarih sırasıyla biriktirin — talebinizin temeli budur.",
+      "Satıcıya yazılı başvurarak değişim veya iade talebinizi bildirin.",
+      "Satıcı reddederse üretici/ithalatçıya da aynı talebi iletebilirsiniz.",
+      "Tüketici Hakem Heyeti'ne servis kayıtlarını ekleyerek başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.11", "note": "Seçimlik haklar" },
+      { "law": "Satış Sonrası Hizmetler Yönetmeliği", "article": "-", "note": "Arıza tekrarı ve azami onarım süresi" }
+    ],
+    "related": ["telefon-ekrani-kendiliginden-bozuldu", "servis-20-is-gununde-teslim-etmedi", "ayakkabi-tabani-ayrildi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "ikinci-el-urun-ayipli-cikti",
+    "title": "İkinci el ürün ayıplı çıktı",
+    "question": "İkinci el aldığım ürün ayıplı çıktı, hakkım var mı?",
+    "verdict": "kosullu",
+    "category": "Ayıplı Mal",
+    "aliases": ["ikinci el iade", "sahibinden aldım bozuk çıktı", "2. el ayıplı mal"],
+    "summary": "Satıcı bir işletme ise tüketici hukuku korumasındasınız. Satıcı da bireysel bir kişiyse uyuşmazlık tüketici hukukuna değil, genel borçlar hukukuna tabidir.",
+    "situation": "Belirleyici olan ürünün ikinci el olması değil, satıcının sıfatıdır. Satıcı ticari veya mesleki amaçla hareket eden bir işletme (galeri, mağaza, yenilenmiş ürün satıcısı) ise işlem tüketici işlemidir.",
+    "legal": "Bireyden bireye satışta 6502 sayılı Kanun uygulanmaz; Türk Borçlar Kanunu'nun ayıba karşı tekeffül hükümleri devreye girer ve uyuşmazlık tüketici hakem heyetinde değil genel mahkemelerde görülür. İkinci el ürünlerde ayıptan sorumluluk süresi taraflarca kısaltılabilir, ancak bu süre kanunda öngörülen asgari sürenin altına indirilemez.",
+    "rights": [
+      "Satıcı işletme ise: dört seçimlik hak (onarım, değişim, bedel indirimi, iade)",
+      "Satıcı bireysel kişi ise: TBK kapsamında ayıba karşı tekeffül talepleri"
+    ],
+    "deadline": "Satıcı işletme ise ikinci el mallarda ayıptan sorumluluk süresi 1 yıldan (tescilli taşıtlarda 3 aydan) az olamaz.",
+    "authority": "Satıcı işletme ise Tüketici Hakem Heyeti / Tüketici Mahkemesi; bireysel satıcıda Asliye Hukuk / Sulh Hukuk Mahkemesi.",
+    "steps": [
+      "Satıcının ticari sıfatını belirleyin: fatura mı, şahsi satış mı?",
+      "İlan metnini, mesajlaşmaları ve ödeme kayıtlarını saklayın — ayıbın gizlendiğini ispat için gerekir.",
+      "Satıcıya yazılı başvurun.",
+      "Sıfata göre doğru mercie (hakem heyeti veya genel mahkeme) başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.3", "note": "Tüketici ve satıcı tanımları" },
+      { "law": "6502 sayılı TKHK", "article": "m.12", "note": "İkinci el mallarda sorumluluk süresi" },
+      { "law": "6098 sayılı TBK", "article": "m.219 vd.", "note": "Ayıba karşı tekeffül" }
+    ],
+    "related": ["ayakkabi-tabani-ayrildi", "yenilenmis-telefon-garanti"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "yenilenmis-telefon-garanti",
+    "title": "Yenilenmiş telefonun garantisi yok denildi",
+    "question": "Yenilenmiş telefon aldım, garantisi yok mu?",
+    "verdict": "var",
+    "category": "Ayıplı Mal",
+    "aliases": ["yenilenmiş ürün garanti", "refurbished telefon garanti", "yenileme merkezi garanti"],
+    "summary": "Yetkili yenileme merkezleri tarafından yenilenen ürünler, yenilenmiş ürün garanti belgesi ile satılmak zorundadır; garanti süresi en az bir yıldır.",
+    "situation": "\"Yenilenmiş ürün\" satışı ayrı bir mevzuatla düzenlenmiştir. Ürünün yenilenmiş olduğu satış öncesinde açıkça bildirilmek ve ürün garanti belgesiyle teslim edilmek zorundadır.",
+    "legal": "Yenilenmiş ürünlerde garanti süresi bir yıldan az olamaz ve garanti, yenileme merkezi ile satıcının müteselsil sorumluluğundadır. Garanti kapsamındaki arızalarda genel seçimlik haklar uygulanır.",
+    "rights": [
+      "En az 1 yıl garanti",
+      "Ücretsiz onarım",
+      "Arıza tekrarında değişim veya bedel iadesi"
+    ],
+    "deadline": "Garanti süresi asgari 1 yıl; cayma hakkı için mesafeli satışlarda 14 gün.",
+    "authority": "Satıcı / yenileme merkezi → Tüketici Hakem Heyeti / Tüketici Mahkemesi.",
+    "steps": [
+      "Yenilenmiş ürün garanti belgesini teslim anında isteyin.",
+      "Ürünün yenilenmiş olduğunun satış sayfasında/faturada belirtildiğini kontrol edin.",
+      "Arıza hâlinde yenileme merkezinin yetkili servisine başvurun.",
+      "Sonuç alınamazsa hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.58", "note": "Garanti belgesi" },
+      { "law": "Yenilenmiş Ürünlerin Satışı Hakkında Yönetmelik", "article": "-", "note": "Yenilenmiş ürün garantisi ve yenileme merkezi yükümlülükleri" }
+    ],
+    "related": ["ikinci-el-urun-ayipli-cikti", "telefon-ekrani-kendiliginden-bozuldu"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "internetten-aldigim-urunu-iade",
+    "title": "İnternetten aldığım ürünü beğenmedim",
+    "question": "İnternetten aldığım ürünü sebep göstermeden iade edebilir miyim?",
+    "verdict": "var",
+    "category": "İade & Cayma",
+    "aliases": ["14 gün cayma hakkı", "internetten iade", "online alışveriş iade", "sebepsiz iade"],
+    "summary": "Mesafeli sözleşmelerde hiçbir gerekçe göstermeden ve cezai şart ödemeden 14 gün içinde cayma hakkınız vardır.",
+    "situation": "İnternet, telefon veya katalog üzerinden, satıcıyla yüz yüze gelmeden kurulan sözleşmeler \"mesafeli sözleşme\"dir. Mağazadan yapılan alışverişlerde bu hak kanunen zorunlu değildir — mağazanın kendi iade politikası geçerlidir.",
+    "legal": "Cayma süresi malın teslim alındığı günden itibaren 14 gündür. Satıcı cayma hakkı konusunda gereği gibi bilgilendirme yapmamışsa bu süre uzar. Cayma bildirimini süre içinde göndermeniz yeterlidir; ürünün iade tarihi değil, bildirimin gönderildiği tarih esastır.",
+    "rights": [
+      "14 gün içinde gerekçesiz cayma",
+      "Ödenen bedelin 14 gün içinde iadesi",
+      "Satıcının belirttiği taşıyıcı ile iadede kargo ücretinden sorumlu olmama"
+    ],
+    "deadline": "Teslimden itibaren 14 gün. Satıcı bilgilendirme yükümlülüğünü yerine getirmemişse süre uzar.",
+    "authority": "Satıcı / platform → Tüketici Hakem Heyeti / Tüketici Mahkemesi.",
+    "steps": [
+      "Cayma bildirimini yazılı olarak (platform formu, e-posta) 14 gün içinde gönderin ve kaydını alın.",
+      "Ürünü ön bilgilendirmede belirtilen taşıyıcıyla, süresinde gönderin.",
+      "Bedel 14 gün içinde iade edilmezse gecikme için yazılı talep oluşturun.",
+      "İade yapılmazsa hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.48", "note": "Mesafeli sözleşmeler ve cayma hakkı" },
+      { "law": "Mesafeli Sözleşmeler Yönetmeliği", "article": "-", "note": "14 günlük süre, bildirim ve iade usulü" }
+    ],
+    "related": ["cayma-hakki-istisnalari", "iade-ettim-param-yatmadi", "magazadan-aldigim-urunu-iade"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "cayma-hakki-istisnalari",
+    "title": "Ambalajı açılmış / kişiye özel ürünü iade",
+    "question": "Ambalajını açtığım ürünü iade edebilir miyim?",
+    "verdict": "kosullu",
+    "category": "İade & Cayma",
+    "aliases": ["ambalajı açılmış iade", "kişiye özel ürün iade", "cayma hakkı istisnası", "hijyenik ürün iade"],
+    "summary": "Cayma hakkının kullanılamayacağı istisnalar vardır: kişiye özel hazırlanan, çabuk bozulan, iadesi sağlık/hijyen açısından uygun olmayıp ambalajı açılan ürünler ile ifasına başlanan dijital içerikler bunlardandır.",
+    "situation": "Ambalajın açılmış olması tek başına cayma hakkını ortadan kaldırmaz. Belirleyici olan, ürünün istisna kapsamında olup olmadığıdır. Ürünü deneme amaçlı incelemeniz normaldir; ancak olağan kullanımın ötesindeki değer kaybından sorumlu olabilirsiniz.",
+    "legal": "Yönetmelikte sayılan istisnalar sınırlı sayıdadır ve genişletilerek yorumlanamaz. Satıcı, cayma hakkının kullanılamayacağı hâlleri ön bilgilendirmede açıkça bildirmek zorundadır; bildirmemişse bu istisnayı ileri süremez.",
+    "rights": [
+      "İstisna kapsamında değilse: 14 gün içinde cayma",
+      "Ön bilgilendirme yapılmamışsa: istisnanın ileri sürülememesi"
+    ],
+    "deadline": "Teslimden itibaren 14 gün.",
+    "authority": "Satıcı → Tüketici Hakem Heyeti / Tüketici Mahkemesi.",
+    "steps": [
+      "Ön bilgilendirme formunda cayma istisnasının yazılı olup olmadığını kontrol edin.",
+      "Ürünün gerçekten istisna kategorisine girip girmediğini değerlendirin.",
+      "İstisna kapsamında değilse cayma bildiriminizi yazılı gönderin.",
+      "Reddedilirse ön bilgilendirme eksikliğini de belirterek hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "Mesafeli Sözleşmeler Yönetmeliği", "article": "m.15", "note": "Cayma hakkının istisnaları" },
+      { "law": "6502 sayılı TKHK", "article": "m.48", "note": "Ön bilgilendirme yükümlülüğü" }
+    ],
+    "related": ["internetten-aldigim-urunu-iade", "dijital-icerik-oyun-iade"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "magazadan-aldigim-urunu-iade",
+    "title": "Mağazadan aldığım ürünü beğenmedim",
+    "question": "Mağazadan aldığım sağlam ürünü iade edebilir miyim?",
+    "verdict": "yok",
+    "category": "İade & Cayma",
+    "aliases": ["mağaza iade hakkı", "beğenmedim iade", "fiziksel mağaza iade", "kurumsal iade politikası"],
+    "summary": "Ayıpsız bir ürün için fiziki mağazadan yapılan alışverişte kanunen cayma hakkı yoktur; iade tamamen mağazanın kendi politikasına bağlıdır.",
+    "situation": "14 günlük cayma hakkı yalnızca mesafeli ve işyeri dışında kurulan sözleşmelere özgüdür. Mağazadan ürünü görerek satın aldığınızda bu hak doğmaz.",
+    "legal": "Mağaza kendi ticari politikası gereği iade/değişim taahhüdünde bulunmuşsa (fiş üzerinde, tabelada veya kampanya koşullarında), bu taahhüt sözleşme hükmü hâline gelir ve mağazayı bağlar. Ürün ayıplıysa mağaza politikasından bağımsız olarak seçimlik haklarınız zaten doğar.",
+    "rights": [
+      "Ürün ayıplıysa: dört seçimlik hak",
+      "Mağaza iade taahhüdü vermişse: taahhüde uyulmasını isteme"
+    ],
+    "deadline": "Ayıp hâlinde teslimden itibaren 2 yıl. Mağaza politikasında ise ilan edilen süre.",
+    "authority": "Mağaza → (ayıp veya taahhüt varsa) Tüketici Hakem Heyeti.",
+    "steps": [
+      "Fiş/fatura üzerindeki iade koşullarını okuyun.",
+      "İade taahhüdü verilmişse yazılı olarak (fiş, kampanya görseli) kanıtlayın.",
+      "Üründe ayıp varsa iadeyi \"beğenmeme\" değil \"ayıp\" gerekçesiyle talep edin.",
+      "Reddedilirse hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.48", "note": "Cayma hakkının mesafeli sözleşmelere özgü olması" },
+      { "law": "6502 sayılı TKHK", "article": "m.11", "note": "Ayıp hâlinde seçimlik haklar" }
+    ],
+    "related": ["internetten-aldigim-urunu-iade", "ayakkabi-tabani-ayrildi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "iade-ettim-param-yatmadi",
+    "title": "Ürünü iade ettim ama param yatmadı",
+    "question": "İade ettim, param hâlâ yatmadı. Ne yapabilirim?",
+    "verdict": "var",
+    "category": "İade & Cayma",
+    "aliases": ["para iadesi gecikmesi", "iade param gelmedi", "cayma sonrası iade süresi"],
+    "summary": "Cayma bildirimi satıcıya ulaştıktan sonra ödediğiniz tüm bedel ve teslim masrafları en geç 14 gün içinde iade edilmek zorundadır.",
+    "situation": "Satıcılar iadeyi \"ürün depoya ulaştıktan sonra\" başlatmayı tercih eder; ancak kanuni süre cayma bildiriminin satıcıya ulaşmasıyla işlemeye başlar. Bankanın kartınıza yansıtma süresi bu sürenin üzerine eklenmez, satıcıdan kaynaklanan gecikme sayılır.",
+    "legal": "İade, tüketicinin satın alırken kullandığı ödeme aracına uygun şekilde ve tüketiciye hiçbir masraf yüklenmeden yapılır. Hediye çeki / mağaza kredisi olarak iade, tüketici kabul etmedikçe geçerli değildir.",
+    "rights": [
+      "14 gün içinde bedelin tamamının iadesi",
+      "Teslim masraflarının da iadesi",
+      "Nakit/karta iade — hediye çekine zorlanmama"
+    ],
+    "deadline": "Cayma bildiriminin satıcıya ulaştığı tarihten itibaren 14 gün.",
+    "authority": "Satıcı / platform → Tüketici Hakem Heyeti.",
+    "steps": [
+      "Cayma bildiriminizin tarihini ve kargo takip kaydını belgeleyin.",
+      "Satıcıya 14 günlük sürenin dolduğunu yazılı bildirin.",
+      "Ödeme kart ile yapıldıysa bankanıza \"chargeback / harcama itirazı\" başvurusu yapabilirsiniz.",
+      "Hakem heyetine bildirim tarihi ve kargo kaydı ile başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.48", "note": "Cayma hâlinde bedel iadesi" },
+      { "law": "Mesafeli Sözleşmeler Yönetmeliği", "article": "-", "note": "14 günlük iade süresi ve ödeme aracına iade" }
+    ],
+    "related": ["internetten-aldigim-urunu-iade", "siparis-teslim-edilmedi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "dijital-icerik-oyun-iade",
+    "title": "Dijital oyun / uygulama satın aldım, iade edebilir miyim?",
+    "question": "İndirdiğim dijital içeriği iade edebilir miyim?",
+    "verdict": "kosullu",
+    "category": "İade & Cayma",
+    "aliases": ["oyun iadesi", "dijital içerik cayma", "uygulama iadesi", "steam iade"],
+    "summary": "Elektronik ortamda anında ifa edilen ve tüketiciye anında teslim edilen gayrimaddi mallarda, ifaya başlanmışsa cayma hakkı kullanılamaz.",
+    "situation": "Dijital içeriği indirdiyseniz veya erişimi başlattıysanız kural olarak cayma hakkı düşer. Ancak satıcı, cayma hakkının kullanılamayacağını ön bilgilendirmede açıkça belirtmemiş ve onayınızı almamışsa bu istisnaya dayanamaz.",
+    "legal": "İçerik hiç indirilmemiş/erişilmemişse cayma hakkı ayaktadır. Ayrıca dijital içerik vaat edilen nitelikte değilse (çalışmıyor, tanıtıldığı özellikleri taşımıyor) bu bir ayıptır ve cayma hakkından bağımsız olarak talep hakkı doğurur.",
+    "rights": [
+      "İfaya başlanmamışsa: 14 gün içinde cayma",
+      "Ön bilgilendirme/onay yoksa: cayma hakkının korunması",
+      "İçerik ayıplıysa: bedel iadesi veya indirim"
+    ],
+    "deadline": "14 gün (ifaya başlanmamışsa). Ayıp hâlinde genel zamanaşımı süreleri.",
+    "authority": "Satıcı / platform → Tüketici Hakem Heyeti.",
+    "steps": [
+      "İçeriği indirip indirmediğinizi / erişim başlatıp başlatmadığınızı netleştirin.",
+      "Satın alma ekranında cayma hakkı onayı isteyip istemediğine bakın.",
+      "Platformun iade formunu doldurun, yazışmayı saklayın.",
+      "Reddedilirse ön bilgilendirme eksikliğini gerekçe göstererek hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "Mesafeli Sözleşmeler Yönetmeliği", "article": "m.15", "note": "Elektronik ortamda anında ifa edilen gayrimaddi mallar" },
+      { "law": "6502 sayılı TKHK", "article": "m.48", "note": "Ön bilgilendirme ve cayma" }
+    ],
+    "related": ["cayma-hakki-istisnalari", "internetten-aldigim-urunu-iade"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "kargo-kayboldu",
+    "title": "Kargom kayboldu / hasarlı geldi",
+    "question": "Kargom kayboldu veya kırık geldi, kime başvurmalıyım?",
+    "verdict": "var",
+    "category": "Kargo & Teslimat",
+    "aliases": ["kargo kayıp tazminat", "kargo hasarlı geldi", "paketim gelmedi", "kırık ürün kargo"],
+    "summary": "Satıcı, ürünü size sağlam teslim etmekle yükümlüdür. Kargo ile satıcı arasındaki ilişki sizi bağlamaz; muhatabınız satıcıdır.",
+    "situation": "Satıcılar sıklıkla \"kargo şirketiyle görüşün\" der. Oysa mesafeli satışta malın tüketiciye ulaşmasına kadar oluşan kayıp ve hasardan satıcı sorumludur — taşıyıcıyı satıcı seçmiştir.",
+    "legal": "Satıcı, sözleşmenin ifasını taşıyıcıya bırakarak sorumluluktan kurtulamaz. Hasarlı teslimde teslim anında tutanak tutturmak ispat açısından çok güçlü bir delildir; tutanak tutulmaması hakkı ortadan kaldırmaz ancak ispatı zorlaştırır.",
+    "rights": [
+      "Ürünün yeniden gönderilmesi",
+      "Bedel iadesi",
+      "Hasarlı üründe ayıp hükümlerine göre seçimlik haklar"
+    ],
+    "deadline": "Kayıp/hasar tespitinden sonra makul sürede bildirim; talep için genel zamanaşımı.",
+    "authority": "Satıcı (öncelikli muhatap) → Tüketici Hakem Heyeti. Taşıma sözleşmesinden doğan ayrı talepler için kargo şirketi.",
+    "steps": [
+      "Teslimde paket hasarlıysa kuryeye tutanak tutturun veya teslim almayın.",
+      "Açılış videosu / fotoğraf çekin (özellikle kutu ve koli bandı görünsün).",
+      "Satıcıya yazılı başvurarak yeniden gönderim veya bedel iadesi talep edin.",
+      "Reddedilirse kargo takip kaydı ve görsellerle hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.48", "note": "Mesafeli sözleşmede satıcının teslim yükümlülüğü" },
+      { "law": "Mesafeli Sözleşmeler Yönetmeliği", "article": "-", "note": "Teslimat ve satıcının sorumluluğu" }
+    ],
+    "related": ["siparis-teslim-edilmedi", "iade-ettim-param-yatmadi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "siparis-teslim-edilmedi",
+    "title": "Sipariş süresinde teslim edilmedi",
+    "question": "Siparişim zamanında gelmedi, siparişi iptal edebilir miyim?",
+    "verdict": "var",
+    "category": "Kargo & Teslimat",
+    "aliases": ["teslimat gecikmesi", "30 gün teslim süresi", "sipariş iptali gecikme"],
+    "summary": "Mesafeli satışta teslim süresi en fazla 30 gündür; bu süre aşılırsa sözleşmeyi feshedip bedelin iadesini isteyebilirsiniz.",
+    "situation": "Taahhüt edilen sürede — taahhüt yoksa 30 gün içinde — teslim yapılmaması hâlinde tüketici sözleşmeyi feshedebilir. Fesih bildiriminden sonra bedel gecikmeksizin iade edilmelidir.",
+    "legal": "Satıcı, malın stokta olmaması veya benzeri gerekçelerle yükümlülüğünü yerine getiremiyorsa bu durumu tüketiciye bildirmek ve ödenen bedeli iade etmekle yükümlüdür.",
+    "rights": [
+      "Sözleşmeyi fesih",
+      "Ödenen bedelin tamamının iadesi",
+      "Varsa doğan zararın tazmini"
+    ],
+    "deadline": "Taahhüt edilen süre; taahhüt yoksa sipariş tarihinden itibaren azami 30 gün.",
+    "authority": "Satıcı → Tüketici Hakem Heyeti.",
+    "steps": [
+      "Sipariş onayındaki taahhüt edilen teslim tarihini kaydedin.",
+      "Süre dolunca yazılı fesih bildirimi gönderin ve bedel iadesi isteyin.",
+      "Kart ile ödediyseniz bankaya harcama itirazı seçeneğini değerlendirin.",
+      "İade yapılmazsa hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.48", "note": "Teslim süresi ve fesih hakkı" },
+      { "law": "Mesafeli Sözleşmeler Yönetmeliği", "article": "-", "note": "Azami 30 günlük teslim süresi" }
+    ],
+    "related": ["kargo-kayboldu", "iade-ettim-param-yatmadi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "servis-20-is-gununde-teslim-etmedi",
+    "title": "Servis ürünü 20 iş gününde teslim etmedi",
+    "question": "Servisteki ürünüm aylardır gelmiyor, ne yapabilirim?",
+    "verdict": "var",
+    "category": "Garanti & Servis",
+    "aliases": ["servis süresi aşımı", "20 iş günü onarım", "servis ürünü vermiyor"],
+    "summary": "Azami onarım süresi aşılırsa ürünün ayıpsız misli ile değiştirilmesini veya bedel iadesini talep edebilirsiniz.",
+    "situation": "Onarım süresi, arızanın servise bildirildiği tarihte işlemeye başlar. Süre içinde onarım tamamlanmazsa, üretici/ithalatçı ürünün değişimini veya bedel iadesini karşılamakla yükümlüdür.",
+    "legal": "Garanti süresi içinde, onarım süresince ürünün kullanılamadığı süreler garanti süresine eklenir. Süre aşımının ispatı için servis giriş formundaki tarih belirleyicidir.",
+    "rights": [
+      "Ayıpsız misli ile değişim",
+      "Bedel iadesi",
+      "Kullanılamayan sürenin garanti süresine eklenmesi"
+    ],
+    "deadline": "Azami onarım süresi 20 iş günü (konut/tatil amaçlı taşınmazlarda 30 iş günü).",
+    "authority": "Yetkili servis / satıcı / üretici → Tüketici Hakem Heyeti.",
+    "steps": [
+      "Servis giriş formundaki teslim tarihini esas alın ve 20 iş gününü hesaplayın.",
+      "Süre dolduğunda değişim veya iade talebinizi yazılı olarak satıcıya ve üreticiye iletin.",
+      "Servisin gecikme gerekçesini yazılı isteyin.",
+      "Talep karşılanmazsa hakem heyetine servis formuyla başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.58", "note": "Garanti belgesi" },
+      { "law": "Satış Sonrası Hizmetler Yönetmeliği", "article": "-", "note": "Azami onarım süresi" }
+    ],
+    "related": ["telefon-ekrani-kendiliginden-bozuldu", "urun-ucuncu-kez-ayni-arizayi-verdi", "yedek-parca-bulunamiyor"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "yedek-parca-bulunamiyor",
+    "title": "Ürünün yedek parçası bulunamıyor",
+    "question": "Cihazımın yedek parçası yok deniyor, hakkım var mı?",
+    "verdict": "var",
+    "category": "Garanti & Servis",
+    "aliases": ["yedek parça bulunmuyor", "kullanım ömrü yedek parça", "servis parça yok diyor"],
+    "summary": "Üretici ve ithalatçılar, ürünün ilan edilen kullanım ömrü süresince yedek parça bulundurmak ve satış sonrası hizmet vermek zorundadır.",
+    "situation": "Bakanlıkça belirlenen kullanım ömrü süresince satış sonrası hizmet sağlanması zorunludur. \"Parça yok\" denmesi bu yükümlülüğü ortadan kaldırmaz.",
+    "legal": "Yedek parça temin edilemiyorsa, arıza giderilemiyor demektir; bu durumda ürünün ayıpsız misli ile değiştirilmesi veya bedel iadesi gündeme gelir. Yükümlülük üretici ve ithalatçıdadır.",
+    "rights": [
+      "Kullanım ömrü boyunca servis ve yedek parça",
+      "Parça yoksa: değişim veya bedel iadesi"
+    ],
+    "deadline": "Bakanlıkça ürün grubu için belirlenen kullanım ömrü süresince.",
+    "authority": "Üretici / ithalatçı → Tüketici Hakem Heyeti. Ayrıca Ticaret Bakanlığı'na (Tüketici Bilgi Sistemi) ihbar.",
+    "steps": [
+      "Servisten \"parça temin edilemiyor\" yazısını yazılı olarak alın.",
+      "Üretici/ithalatçıya yazılı başvurarak değişim veya iade talep edin.",
+      "Ticaret Bakanlığı'na (tuketicisikayeti/TÜBİS) ihbarda bulunun.",
+      "Sonuç alınamazsa hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.57", "note": "Satış sonrası hizmetler" },
+      { "law": "Satış Sonrası Hizmetler Yönetmeliği", "article": "-", "note": "Kullanım ömrü ve yedek parça bulundurma" }
+    ],
+    "related": ["servis-20-is-gununde-teslim-etmedi", "urun-ucuncu-kez-ayni-arizayi-verdi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "garanti-belgesi-verilmedi",
+    "title": "Satıcı garanti belgesi vermedi",
+    "question": "Garanti belgesi vermeden sattılar, garantim yok mu?",
+    "verdict": "var",
+    "category": "Garanti & Servis",
+    "aliases": ["garanti belgesi vermedi", "garanti belgesiz satış", "fiş garanti yerine geçer mi"],
+    "summary": "Garanti belgesinin düzenlenip verilmesi satıcı ve üreticinin yükümlülüğüdür; belge verilmemesi tüketicinin garanti hakkını ortadan kaldırmaz.",
+    "situation": "Belgenin verilmemiş olması, kanundan doğan asgari iki yıllık garanti süresini etkilemez. Fatura/fiş, satın alma tarihinin ispatı için yeterlidir.",
+    "legal": "Garanti belgesi düzenleme ve tüketiciye verme yükümlülüğünü yerine getirmeyen satıcı ve üretici hakkında idari para cezası uygulanabilir.",
+    "rights": [
+      "Belge olmasa da asgari 2 yıl garanti",
+      "Belgenin sonradan düzenlenip verilmesini talep",
+      "İdari yaptırım için Bakanlığa ihbar"
+    ],
+    "deadline": "Garanti süresi asgari 2 yıl (bazı ürün gruplarında daha uzun).",
+    "authority": "Satıcı / üretici → Tüketici Hakem Heyeti; idari yaptırım için Ticaret Bakanlığı.",
+    "steps": [
+      "Fatura veya fişi saklayın — garanti başlangıç tarihini bu belgeler ispatlar.",
+      "Satıcıdan garanti belgesini yazılı olarak talep edin.",
+      "Arıza hâlinde belgesiz de yetkili servise başvurun.",
+      "Reddedilirse hakem heyetine ve Bakanlığa başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.56", "note": "Garanti belgesi" },
+      { "law": "Garanti Belgesi Yönetmeliği", "article": "-", "note": "Belge düzenleme ve verme yükümlülüğü" }
+    ],
+    "related": ["telefon-ekrani-kendiliginden-bozuldu", "yenilenmis-telefon-garanti"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "abonelik-iptal-edilmiyor",
+    "title": "Aboneliğimi iptal etmiyorlar",
+    "question": "Aboneliğimi iptal etmek istiyorum ama zorluk çıkarıyorlar, hakkım var mı?",
+    "verdict": "var",
+    "category": "Abonelik & Fatura",
+    "aliases": ["abonelik iptali", "internet aboneliği iptal", "üyelik iptal edilmiyor", "spor salonu üyelik iptali"],
+    "summary": "Belirsiz süreli veya süresi bir yıldan uzun abonelik sözleşmelerini herhangi bir gerekçe göstermeden feshedebilirsiniz; fesih, başvuru yöntemiyle aynı kolaylıkta olmalıdır.",
+    "situation": "Abonelik sözleşmelerinde fesih bildirimi, sözleşmenin kurulduğu yöntemle veya en az onun kadar kolay bir yöntemle yapılabilmelidir. Sözleşmeyi internetten kurduysanız feshi de internetten yapabilmelisiniz.",
+    "legal": "Fesih bildirimi ulaştıktan sonra hizmet sağlayıcı fesih talebini en geç yedi gün içinde yerine getirmekle yükümlüdür. Fesih sonrası dönem için bedel talep edilemez; peşin tahsil edilen bedelin kullanılmayan kısmı iade edilir.",
+    "rights": [
+      "Gerekçesiz fesih",
+      "Kullanılmayan döneme ait bedelin iadesi",
+      "Fesih için ek ücret/cezai şart ödememe (taahhüt hâlleri hariç)"
+    ],
+    "deadline": "Fesih talebi hizmet sağlayıcıya ulaştıktan sonra en geç 7 gün içinde yerine getirilir.",
+    "authority": "Hizmet sağlayıcı → Tüketici Hakem Heyeti. Elektronik haberleşme için ayrıca BTK.",
+    "steps": [
+      "Fesih bildirimini yazılı kanaldan (site formu, e-posta, KEP) gönderin ve kaydını alın.",
+      "Taahhütlü aboneliklerde kalan taahhüt bedelini önceden hesaplatın.",
+      "7 gün içinde sonlandırılmazsa yazılı olarak tekrar bildirin.",
+      "Fatura kesilmeye devam ederse hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.52", "note": "Abonelik sözleşmeleri ve fesih" },
+      { "law": "Abonelik Sözleşmeleri Yönetmeliği", "article": "-", "note": "Fesih usulü ve 7 günlük süre" }
+    ],
+    "related": ["haberim-olmadan-ek-hizmet-eklendi", "taahhut-cayma-bedeli"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "haberim-olmadan-ek-hizmet-eklendi",
+    "title": "Haberim olmadan faturaya ek hizmet eklendi",
+    "question": "Onayım olmadan eklenen hizmetin bedelini ödemek zorunda mıyım?",
+    "verdict": "var",
+    "category": "Abonelik & Fatura",
+    "aliases": ["onaysız ek paket", "faturaya eklenen hizmet", "istemediğim servis ücreti"],
+    "summary": "Tüketicinin açık onayı olmadan ek ödeme doğuran hizmet eklenemez; eklenmişse ödenen tutarın iadesini isteyebilirsiniz.",
+    "situation": "Sözleşme kurulurken veya sonrasında, varsayılan olarak işaretlenmiş kutucuklarla ya da hiç bilgilendirme yapılmadan eklenen ek hizmetler geçersizdir. Onay, ayrı ve açık bir irade beyanı olmalıdır.",
+    "legal": "Tüketiciden, asıl sözleşme konusu dışında ek ödeme doğuran herhangi bir hizmet için açık onay alınması zorunludur. Bu onay olmaksızın tahsil edilen bedeller iade edilir.",
+    "rights": [
+      "Ek hizmetin iptali",
+      "Onaysız tahsil edilen tutarın iadesi",
+      "İleriye dönük tahsilatın durdurulması"
+    ],
+    "deadline": "Tahsilatın öğrenilmesinden sonra makul sürede; talep için genel zamanaşımı.",
+    "authority": "Hizmet sağlayıcı → Tüketici Hakem Heyeti. Sektöre göre BTK / BDDK / Sigortacılık ve Özel Emeklilik Düzenleme ve Denetleme Kurumu.",
+    "steps": [
+      "Fatura dökümünü alıp ek kalemleri tek tek listeleyin.",
+      "Hizmet sağlayıcıdan bu hizmete ilişkin onay kaydını (ses kaydı, log) yazılı isteyin.",
+      "Onay ibraz edilemiyorsa iptal ve iade talebinizi yazılı iletin.",
+      "Sonuç alınamazsa hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.4", "note": "Ek ödeme doğuran işlemler için açık onay" },
+      { "law": "6502 sayılı TKHK", "article": "m.52", "note": "Abonelik sözleşmeleri" }
+    ],
+    "related": ["abonelik-iptal-edilmiyor", "kredi-dosya-masrafi-iadesi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "kredi-dosya-masrafi-iadesi",
+    "title": "Krediden kesilen dosya masrafı",
+    "question": "Bankanın kestiği dosya masrafını geri alabilir miyim?",
+    "verdict": "kosullu",
+    "category": "Abonelik & Fatura",
+    "aliases": ["dosya masrafı iadesi", "kredi masrafı geri alma", "banka ücret iadesi", "tahsis ücreti"],
+    "summary": "Tüketici kredilerinde bankalar yalnızca mevzuatta sayılan sınırlı ücretleri alabilir; haksız veya bilgilendirilmeden alınan kesintiler iade edilir.",
+    "situation": "Bankanın alabileceği ücret kalemleri ve azami oranları düzenlenmiştir. Sözleşmede yer almayan, tüketiciye ayrıca bildirilmeyen veya üst sınırı aşan kesintiler haksızdır. \"Tahsis ücreti\" gibi mevzuatta tanımlı kalemler ise sınırları içinde geçerli olabilir.",
+    "legal": "Tüketici kredisi sözleşmesinde faiz dışında alınacak her türlü ücret, sözleşmede açıkça gösterilmek zorundadır. Gösterilmeyen kalemler talep edilemez.",
+    "rights": [
+      "Haksız kesintinin iadesi",
+      "Sözleşme örneğinin ücretsiz verilmesini isteme",
+      "Erken ödemede faiz indirimi"
+    ],
+    "deadline": "Zamanaşımı süreleri içinde; gecikmeden başvurulması tavsiye edilir.",
+    "authority": "Banka → Tüketici Hakem Heyeti / Tüketici Mahkemesi. Ayrıca BDDK ve Türkiye Bankalar Birliği Hakem Heyeti.",
+    "steps": [
+      "Kredi sözleşmenizin ve ödeme planının bir örneğini bankadan isteyin.",
+      "Kesinti kalemlerini sözleşmedeki ücret tablosuyla karşılaştırın.",
+      "Bankaya yazılı iade talebi gönderin (20 gün içinde cevap verilmelidir).",
+      "Reddedilirse hakem heyetine sözleşme ve dekontlarla başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.4", "note": "Sözleşmede gösterilmeyen ücretin talep edilememesi" },
+      { "law": "6502 sayılı TKHK", "article": "m.22 vd.", "note": "Tüketici kredisi sözleşmeleri" },
+      { "law": "Finansal Tüketicilerden Alınacak Ücretlere İlişkin Usul ve Esaslar Hakkında Yönetmelik", "article": "-", "note": "Alınabilecek ücret kalemleri ve sınırları" }
+    ],
+    "related": ["haberim-olmadan-ek-hizmet-eklendi", "kampanya-fiyati-uygulanmadi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "taahhut-cayma-bedeli",
+    "title": "Taahhütlü aboneliği erken bitirdim, cayma bedeli istiyorlar",
+    "question": "Taahhüdü erken bozdum, istenen cayma bedeli doğru mu?",
+    "verdict": "kosullu",
+    "category": "Abonelik & Fatura",
+    "aliases": ["taahhüt cayma bedeli", "erken fesih cezası", "taahhüt bozma ücreti"],
+    "summary": "Taahhütlü sözleşmelerde erken fesih hâlinde istenebilecek bedel, size sağlanan indirim ve cihaz gibi menfaatlerin kalan süreye düşen kısmıyla sınırlıdır.",
+    "situation": "Hizmet sağlayıcılar bazen kalan tüm aylık bedeli talep eder; bu doğru değildir. Talep edilebilecek tutar, taahhüt karşılığında sağlanan indirim/cihaz bedelinin kullanılmayan süreye isabet eden kısmını aşamaz.",
+    "legal": "Erken fesihte istenen bedel, taahhüdün sonuna kadar ödenecek bedellerin toplamını aşamaz ve sağlanan menfaatle orantılı olmalıdır. Ayrıca hizmet sağlayıcının kusuru veya hizmet kalitesizliği nedeniyle yapılan fesihlerde cayma bedeli talep edilemez.",
+    "rights": [
+      "Cayma bedelinin hesabının yazılı gösterilmesini isteme",
+      "Orantısız bedele itiraz",
+      "Hizmet kusuru varsa bedelsiz fesih"
+    ],
+    "deadline": "Fesih bildirimi sonrası faturalandırma dönemine göre; itiraz için gecikmeksizin.",
+    "authority": "Hizmet sağlayıcı → Tüketici Hakem Heyeti. Elektronik haberleşmede ayrıca BTK.",
+    "steps": [
+      "Taahhütname metnini ve size sağlanan indirim/cihaz bedelini çıkarın.",
+      "Hizmet sağlayıcıdan cayma bedelinin ayrıntılı hesabını yazılı isteyin.",
+      "Hesap orantısızsa itirazınızı yazılı iletin.",
+      "Sonuç alınamazsa hakem heyetine ve ilgili düzenleyici kuruma başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.52", "note": "Abonelik sözleşmeleri ve fesih" },
+      { "law": "Abonelik Sözleşmeleri Yönetmeliği", "article": "-", "note": "Taahhütlü aboneliklerde erken fesih bedeli" }
+    ],
+    "related": ["abonelik-iptal-edilmiyor", "haberim-olmadan-ek-hizmet-eklendi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "kampanya-fiyati-uygulanmadi",
+    "title": "Etiket fiyatı ile kasa fiyatı farklı çıktı",
+    "question": "Rafta yazan fiyattan farklı ücret alındı, hakkım var mı?",
+    "verdict": "var",
+    "category": "Fiyat & Reklam",
+    "aliases": ["etiket fiyatı farklı", "kasada farklı fiyat", "raf fiyatı kasa fiyatı", "kampanya uygulanmadı"],
+    "summary": "Etikette, listede veya ilanda gösterilen fiyat ile kasada alınan fiyat farklı ise, tüketici lehine olan düşük fiyat uygulanır.",
+    "situation": "Fiyat etiketi bağlayıcı bir beyandır. Satıcı, etiket ile kasa arasındaki farkı \"sistem güncellenmemiş\" gibi gerekçelerle tüketiciye yükleyemez.",
+    "legal": "Etiket, tarife ve fiyat listelerinde belirtilen fiyat ile kasa fiyatı arasında fark olması hâlinde tüketici lehine olan fiyat uygulanır. Aykırılık ayrıca idari para cezasını gerektirir.",
+    "rights": [
+      "Düşük olan fiyattan satın alma",
+      "Fark tahsil edildiyse iadesi",
+      "Bakanlığa ihbar ile idari yaptırım"
+    ],
+    "deadline": "Alışveriş anında veya sonrasında makul sürede; fişi saklayın.",
+    "authority": "Mağaza → Tüketici Hakem Heyeti; idari yaptırım için Ticaret İl Müdürlüğü.",
+    "steps": [
+      "Raf etiketinin fotoğrafını çekin (ürün adı ve barkod görünsün).",
+      "Kasada farkı hemen belirtin, düzeltilmesini isteyin.",
+      "Düzeltilmezse fişi ve etiket fotoğrafını saklayın.",
+      "Ticaret İl Müdürlüğü'ne ihbar edin ve fark için hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.54", "note": "Fiyat etiketi" },
+      { "law": "Fiyat Etiketi Yönetmeliği", "article": "-", "note": "Etiket ile kasa farkında tüketici lehine fiyat" }
+    ],
+    "related": ["yaniltici-reklam-sikayeti", "kredi-dosya-masrafi-iadesi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "yaniltici-reklam-sikayeti",
+    "title": "Reklamda söylenenle ürün uyuşmuyor",
+    "question": "Reklamda vaat edilen özellik üründe yok, ne yapabilirim?",
+    "verdict": "var",
+    "category": "Fiyat & Reklam",
+    "aliases": ["yanıltıcı reklam", "aldatıcı reklam şikayeti", "reklamda vaat edilen özellik yok"],
+    "summary": "Reklamda tanıtılan nitelikleri taşımayan ürün ayıplı sayılır; ayrıca aldatıcı reklam için Reklam Kuruluna şikâyet edilebilir.",
+    "situation": "Satıcının ilan, reklam veya internet sayfasında yaptığı açıklamalar sözleşmenin içeriğine dahildir. Ürün bu niteliği taşımıyorsa \"ayıp\" doğar.",
+    "legal": "Aldatıcı ve haksız ticari uygulamalar yasaktır. Reklam Kurulu, aykırılık hâlinde durdurma, düzeltme ve idari para cezası uygulayabilir. Bu, tüketicinin bireysel iade/tazmin talebinden ayrıdır ve ikisi birlikte yürütülebilir.",
+    "rights": [
+      "Ayıp hükümlerine göre iade / değişim / bedel indirimi",
+      "Reklam Kuruluna şikâyet",
+      "Zararın tazmini"
+    ],
+    "deadline": "Ayıp talepleri için teslimden itibaren 2 yıl; Reklam Kuruluna şikâyette süre sınırı için ilgili mevzuat esastır.",
+    "authority": "Satıcı → Tüketici Hakem Heyeti; aldatıcı reklam için Ticaret Bakanlığı Reklam Kurulu.",
+    "steps": [
+      "Reklamın ekran görüntüsünü / kaydını alın (tarih görünsün).",
+      "Ürünün vaat edilen özelliği taşımadığını belgeleyin.",
+      "Satıcıya ayıp gerekçesiyle yazılı başvurun.",
+      "Ayrıca Reklam Kuruluna (Ticaret Bakanlığı) şikâyette bulunun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.8", "note": "Reklamda tanıtılan niteliğin sözleşmeye dahil olması" },
+      { "law": "6502 sayılı TKHK", "article": "m.61-62", "note": "Aldatıcı reklam ve haksız ticari uygulama" }
+    ],
+    "related": ["kampanya-fiyati-uygulanmadi", "ayakkabi-tabani-ayrildi"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "ucus-rotar-iptal-tazminat",
+    "title": "Uçuşum iptal edildi / uzun rötar yaptı",
+    "question": "Uçuşum iptal oldu veya saatlerce rötar yaptı, tazminat alabilir miyim?",
+    "verdict": "kosullu",
+    "category": "Seyahat",
+    "aliases": ["uçak rötar tazminatı", "uçuş iptali hakları", "havayolu tazminat", "bagaj kaybı"],
+    "summary": "Uçuş iptali ve belirli süreyi aşan rötarlarda bakım/ikram, yeniden yönlendirme, bilet iadesi ve koşulları varsa tazminat hakkınız doğar.",
+    "situation": "Haklar, Sivil Havacılık Genel Müdürlüğü'nün yolcu hakları düzenlemesine tabidir. Hava yolunun kontrolü dışındaki olağanüstü hâller (hava koşulları, güvenlik) tazminat yükümlülüğünü kaldırabilir; ancak bakım ve yeniden yönlendirme yükümlülüğü devam eder.",
+    "legal": "Bu uyuşmazlıklar tüketici hukuku kapsamındadır ve hakem heyeti/tüketici mahkemesine götürülebilir; ayrıca SHGM'ye şikâyet yolu açıktır.",
+    "rights": [
+      "Yemek, içecek, iletişim ve gerekirse konaklama (bakım hizmetleri)",
+      "Bilet bedelinin iadesi veya yeniden yönlendirme",
+      "Koşulları varsa mesafeye göre tazminat"
+    ],
+    "deadline": "Şikâyet için gecikmeksizin; tazminat talebinde genel zamanaşımı süreleri.",
+    "authority": "Hava yolu → SHGM (Sivil Havacılık Genel Müdürlüğü) → Tüketici Hakem Heyeti / Tüketici Mahkemesi.",
+    "steps": [
+      "Biniş kartı, bilet ve gecikme/iptal duyurusunun ekran görüntüsünü saklayın.",
+      "Havalimanında bakım hizmetlerini (yemek, konaklama) yazılı talep edin.",
+      "Hava yoluna yazılı tazminat başvurusu yapın.",
+      "Reddedilirse SHGM'ye şikâyet ve hakem heyetine başvuru yapın."
+    ],
+    "basis": [
+      { "law": "SHY-YOLCU (Havayolu ile Seyahat Eden Yolcuların Haklarına Dair Yönetmelik)", "article": "-", "note": "İptal, rötar, bakım ve tazminat" },
+      { "law": "6502 sayılı TKHK", "article": "m.13 vd.", "note": "Ayıplı hizmet" }
+    ],
+    "related": ["paket-tur-iptali", "otel-tanitildigi-gibi-degil"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "paket-tur-iptali",
+    "title": "Paket tur iptal edildi veya değiştirildi",
+    "question": "Satın aldığım tur iptal edildi, param ne olacak?",
+    "verdict": "var",
+    "category": "Seyahat",
+    "aliases": ["tur iptali", "paket tur iade", "tatil iptali para iadesi"],
+    "summary": "Paket tur sözleşmesi iptal edilirse veya esaslı şekilde değiştirilirse, sözleşmeyi feshedip ödediğiniz bedelin iadesini isteyebilirsiniz.",
+    "situation": "Paket tur; ulaşım, konaklama ve diğer turistik hizmetlerden en az ikisinin birlikte satıldığı sözleşmedir. Düzenleyici, sözleşmede esaslı değişiklik yaparsa tüketici kabul etmek zorunda değildir.",
+    "legal": "Fesih hâlinde ödenen bedel, kesinti yapılmaksızın iade edilir. Paket tur düzenleyicisi ayrıca sözleşmenin ifa edilmemesinden doğan zararlardan sorumludur. Tüketici, tur başlamadan önce sözleşmeyi devredebilir.",
+    "rights": [
+      "Sözleşmeyi fesih ve bedel iadesi",
+      "Eşdeğer alternatif tur talebi",
+      "Doğan zararın tazmini",
+      "Sözleşmeyi başkasına devir"
+    ],
+    "deadline": "İptal/değişiklik bildiriminden sonra makul sürede; iade gecikmeksizin yapılmalıdır.",
+    "authority": "Tur düzenleyici / acente → Tüketici Hakem Heyeti / Tüketici Mahkemesi. Ayrıca TÜRSAB ve Kültür ve Turizm Bakanlığı.",
+    "steps": [
+      "Paket tur sözleşmesi ve ön bilgilendirme formunu hazırlayın.",
+      "İptal/değişiklik bildirimini kaydedin.",
+      "Yazılı fesih ve iade talebi gönderin.",
+      "İade yapılmazsa hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.51", "note": "Paket tur sözleşmeleri" },
+      { "law": "Paket Tur Sözleşmeleri Yönetmeliği", "article": "-", "note": "Fesih, iade ve devir" }
+    ],
+    "related": ["ucus-rotar-iptal-tazminat", "otel-tanitildigi-gibi-degil"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "otel-tanitildigi-gibi-degil",
+    "title": "Otel tanıtıldığı gibi çıkmadı",
+    "question": "Otel reklamdaki gibi değildi, tazminat isteyebilir miyim?",
+    "verdict": "var",
+    "category": "Seyahat",
+    "aliases": ["otel şikayeti", "tatil beklediğim gibi değil", "ayıplı hizmet otel"],
+    "summary": "Tanıtılan niteliği taşımayan konaklama hizmeti ayıplı hizmettir; bedel indirimi, ücretsiz onarım niteliğinde giderim veya sözleşmeden dönme talep edilebilir.",
+    "situation": "Katalogda, internet sitesinde veya sözleşmede belirtilen nitelikler (deniz manzarası, havuz, ulaşım mesafesi, yıldız sayısı) sözleşmenin içeriğidir. Bunlar sağlanmıyorsa hizmet ayıplıdır.",
+    "legal": "Ayıplı hizmette tüketici; hizmetin yeniden görülmesi, ayıp oranında bedel indirimi, ücretsiz onarım veya sözleşmeden dönme haklarından birini seçebilir. Ayıbın tespiti için yerinde alınan görsel ve tanık delilleri önemlidir.",
+    "rights": [
+      "Ayıp oranında bedel indirimi",
+      "Sözleşmeden dönme (bedel iadesi)",
+      "Hizmetin yeniden görülmesi",
+      "Zararın tazmini"
+    ],
+    "deadline": "Ayıplı hizmette zamanaşımı kural olarak 2 yıldır (ağır kusur/hile hâlinde işlemez).",
+    "authority": "Otel / acente → Tüketici Hakem Heyeti / Tüketici Mahkemesi.",
+    "steps": [
+      "Vaat ile gerçeği karşılaştıran fotoğraf/video çekin, tarihli olsun.",
+      "Şikâyetinizi tesise yerinde yazılı bildirin ve kaydını alın.",
+      "Rezervasyonu acente üzerinden yaptıysanız acenteye de bildirin.",
+      "Dönüşte bedel indirimi veya iade talebinizi yazılı iletin; sonuç alınamazsa hakem heyetine başvurun."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.13", "note": "Ayıplı hizmet tanımı" },
+      { "law": "6502 sayılı TKHK", "article": "m.15", "note": "Ayıplı hizmette tüketicinin seçimlik hakları" },
+      { "law": "6502 sayılı TKHK", "article": "m.16", "note": "Zamanaşımı" }
+    ],
+    "related": ["paket-tur-iptali", "yaniltici-reklam-sikayeti"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "hakem-heyeti-mi-mahkeme-mi",
+    "title": "Hakem heyetine mi, tüketici mahkemesine mi?",
+    "question": "Başvurumu nereye yapmalıyım: hakem heyeti mi mahkeme mi?",
+    "verdict": "kosullu",
+    "category": "Başvuru Yolu",
+    "aliases": ["tüketici hakem heyeti sınırı", "nereye başvurmalıyım", "tüketici mahkemesi", "parasal sınır"],
+    "summary": "Uyuşmazlık tutarı, her yıl güncellenen parasal sınırın altındaysa Tüketici Hakem Heyeti'ne başvuru zorunludur; sınırın üstündeyse Tüketici Mahkemesi görevlidir.",
+    "situation": "Parasal sınırlar her yıl yeniden değerleme oranına göre güncellenir ve Aralık ayında Resmî Gazete'de yayımlanır. Güncel tutarı Ticaret Bakanlığı'nın ilgili tebliğinden doğrulayın.",
+    "legal": "Sınırın altındaki uyuşmazlıklarda hakem heyetine başvuru dava şartıdır; doğrudan açılan dava usulden reddedilir. Hakem heyeti kararlarına karşı, kararın tebliğinden itibaren on beş gün içinde Tüketici Mahkemesine itiraz edilebilir. Tüketici mahkemelerinde açılan davalar harçtan muaftır.",
+    "rights": [
+      "Ücretsiz ve avukatsız başvuru",
+      "e-Devlet üzerinden elektronik başvuru (TÜBİS)",
+      "Karara 15 gün içinde itiraz"
+    ],
+    "deadline": "Hakem heyeti kararına itiraz: tebliğden itibaren 15 gün. Başvuru için genel zamanaşımı süreleri.",
+    "authority": "İlçe/İl Tüketici Hakem Heyeti (e-Devlet → Tüketici Bilgi Sistemi) veya Tüketici Mahkemesi.",
+    "steps": [
+      "Uyuşmazlık tutarını netleştirin ve güncel parasal sınırı Bakanlık tebliğinden kontrol edin.",
+      "Tutar sınırın altındaysa e-Devlet üzerinden hakem heyetine başvurun.",
+      "Başvuruya fatura, sözleşme, yazışma ve varsa servis raporlarını ekleyin.",
+      "Karara itiraz edecekseniz 15 günlük süreyi kaçırmayın."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.66-70", "note": "Tüketici hakem heyetleri, görev sınırı ve itiraz" },
+      { "law": "6502 sayılı TKHK", "article": "m.73", "note": "Tüketici mahkemeleri ve harç muafiyeti" }
+    ],
+    "related": ["sikayet-dilekcesi-nasil-yazilir", "kanit-nasil-toplanir"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "sikayet-dilekcesi-nasil-yazilir",
+    "title": "Tüketici şikâyet başvurusu nasıl yapılır?",
+    "question": "Hakem heyetine başvuruyu nasıl yaparım, avukat şart mı?",
+    "verdict": "var",
+    "category": "Başvuru Yolu",
+    "aliases": ["hakem heyeti başvurusu", "tüketici şikayet dilekçesi", "e-devlet tüketici başvurusu", "avukat gerekir mi"],
+    "summary": "Hakem heyeti başvurusu ücretsizdir, avukat zorunlu değildir ve e-Devlet üzerinden Tüketici Bilgi Sistemi'nden yapılabilir.",
+    "situation": "Başvuru, tüketicinin yerleşim yerindeki veya işlemin yapıldığı yerdeki hakem heyetine yapılır. Başvuru dilekçesinde taraflar, talep ve gerekçe açıkça yazılmalı; deliller eklenmelidir.",
+    "legal": "Hakem heyeti, başvuruyu ilgili tarafın cevabını da alarak inceler ve karara bağlar. Karar taraflara tebliğ edilir ve bağlayıcıdır; icra takibine konu edilebilir.",
+    "rights": [
+      "Ücretsiz başvuru",
+      "Avukatsız temsil",
+      "Elektronik ortamda başvuru ve takip"
+    ],
+    "deadline": "Karara itiraz için tebliğden itibaren 15 gün.",
+    "authority": "İlçe/İl Tüketici Hakem Heyeti — e-Devlet → Tüketici Bilgi Sistemi (TÜBİS).",
+    "steps": [
+      "Talebinizi tek cümlede netleştirin (iade / değişim / onarım / bedel indirimi ve tutar).",
+      "Fatura, sözleşme, yazışma, fotoğraf ve servis raporlarını PDF olarak hazırlayın.",
+      "e-Devlet üzerinden Tüketici Bilgi Sistemi'ne girip başvuru formunu doldurun.",
+      "Başvuru numarasını saklayın; karar tebliğinden sonra 15 günlük itiraz süresini takip edin."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.68-70", "note": "Başvuru, inceleme ve karar" },
+      { "law": "Tüketici Hakem Heyetleri Yönetmeliği", "article": "-", "note": "Başvuru usulü ve elektronik başvuru" }
+    ],
+    "related": ["hakem-heyeti-mi-mahkeme-mi", "kanit-nasil-toplanir"],
+    "updated": "2026-09-11"
+  },
+  {
+    "slug": "kanit-nasil-toplanir",
+    "title": "Hangi belgeleri saklamalıyım?",
+    "question": "Tüketici uyuşmazlığında hangi deliller işe yarar?",
+    "verdict": "var",
+    "category": "Başvuru Yolu",
+    "aliases": ["tüketici delil", "hangi belgeler gerekli", "fatura sakladım mı", "ispat yükü"],
+    "summary": "Fatura, sözleşme, yazılı yazışma, görsel kayıt ve servis raporları belirleyicidir. İlk altı ayda ispat yükü satıcıdadır; sonrasında tüketiciye geçer.",
+    "situation": "Uyuşmazlıkların büyük kısmı hukuki sebepten değil, ispat eksikliğinden kaybedilir. Telefonla yapılan görüşmeler ispat açısından zayıftır; yazılı kanal tercih edilmelidir.",
+    "legal": "Teslimden itibaren altı ay içinde ortaya çıkan ayıplarda ayıbın teslim anında var olduğu varsayılır — bu dönemde ispat külfeti satıcıdadır. Altı aydan sonra tüketicinin ayıbı ispatlaması gerekir.",
+    "rights": [
+      "İlk 6 ayda ispat yükünün satıcıda olması",
+      "Bilirkişi incelemesi talep etme",
+      "Sözleşme ve kayıt örneklerini talep etme"
+    ],
+    "deadline": "Belgeleri en az garanti/zamanaşımı süresi boyunca (2 yıl) saklayın.",
+    "authority": "—",
+    "steps": [
+      "Fatura/fişi ve varsa garanti belgesini dijital olarak da arşivleyin.",
+      "Tüm başvuruları e-posta veya form gibi yazılı kanaldan yapın, ekran görüntüsü alın.",
+      "Ürün kusurunu tarih bilgisi görünecek şekilde fotoğraf/videoyla belgeleyin.",
+      "Servis giriş-çıkış formlarını eksiksiz toplayın."
+    ],
+    "basis": [
+      { "law": "6502 sayılı TKHK", "article": "m.10", "note": "İlk altı ayda ispat yükü" },
+      { "law": "6100 sayılı HMK", "article": "m.190", "note": "İspat yükü genel kuralı" }
+    ],
+    "related": ["hakem-heyeti-mi-mahkeme-mi", "sikayet-dilekcesi-nasil-yazilir"],
+    "updated": "2026-09-11"
+  }
+]

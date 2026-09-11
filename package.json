@@ -1,0 +1,17 @@
+{
+  "name": "tuketicihakkim",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tüketici senaryo sözlüğü — hakkım var mı?",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/validate.mjs && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "validate": "node scripts/validate.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.13.0"
+  }
+}

@@ -1,0 +1,189 @@
+---
+import "../styles/global.css";
+import { searchIndex } from "../lib/cases";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  jsonLd?: unknown;
+}
+
+const { title, description, path, jsonLd } = Astro.props;
+const site = "https://tuketicihakkim.com";
+const canonical = site + path;
+const nav = [
+  { href: "/", label: "Ana sayfa" },
+  { href: "/senaryolar/", label: "Senaryolar" },
+  { href: "/basvuru-rehberi/", label: "Başvuru rehberi" },
+  { href: "/hakkinda/", label: "Hakkında" },
+];
+---
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tüketici Hakkım" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="tr_TR" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="theme-color" content="#0c0d10" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <script is:inline>
+      (() => {
+        try {
+          const t = localStorage.getItem("th-theme");
+          if (t) document.documentElement.dataset.theme = t;
+        } catch {}
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="inner">
+        <a class="brand" href="/">
+          Tüketici Hakkım<small>Senaryo Sözlüğü</small>
+        </a>
+        <nav class="site-nav">
+          {nav.map((n) => (
+            <a href={n.href} aria-current={path === n.href ? "page" : undefined}>{n.label}</a>
+          ))}
+        </nav>
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Temayı değiştir">◐</button>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="cols">
+          <a href="/senaryolar/">Tüm senaryolar</a>
+          <a href="/basvuru-rehberi/">Başvuru rehberi</a>
+          <a href="/hakkinda/">Hakkında</a>
+          <a href="https://tuketicisikayeti.ticaret.gov.tr/" rel="nofollow noopener" target="_blank">Ticaret Bakanlığı</a>
+          <a href="https://www.turkiye.gov.tr/" rel="nofollow noopener" target="_blank">e-Devlet</a>
+        </div>
+        <p class="disclaimer">
+          Bu sitedeki bilgiler genel bilgilendirme amaçlıdır, hukuki danışmanlık değildir ve avukat–müvekkil
+          ilişkisi doğurmaz. Mevzuat ve parasal sınırlar değişebilir; somut olayınızın koşulları farklı bir
+          sonuç doğurabilir. Karar vermeden önce güncel mevzuatı kontrol edin veya bir avukata danışın.
+        </p>
+        <p style="margin-top:16px">© {new Date().getFullYear()} Tüketici Hakkım · Açık kaynak bir hobi projesi</p>
+      </div>
+    </footer>
+
+    <script type="application/json" id="search-index" is:inline set:html={JSON.stringify(searchIndex)} />
+
+    <script is:inline>
+      // ---- tema ----
+      document.getElementById("theme-toggle")?.addEventListener("click", () => {
+        const el = document.documentElement;
+        const next = el.dataset.theme === "light" ? "dark" : "light";
+        el.dataset.theme = next;
+        try { localStorage.setItem("th-theme", next); } catch {}
+      });
+
+      // ---- arama ----
+      const TR = { "ı":"i","İ":"i","ş":"s","Ş":"s","ğ":"g","Ğ":"g","ü":"u","Ü":"u","ö":"o","Ö":"o","ç":"c","Ç":"c","â":"a","î":"i","û":"u" };
+      const norm = (s) => (s || "").toLowerCase().replace(/[ıİşŞğĞüÜöÖçÇâîû]/g, (m) => TR[m] || m);
+
+      const idxEl = document.getElementById("search-index");
+      if (idxEl) {
+        const DATA = JSON.parse(idxEl.textContent).map((d) => ({
+          ...d,
+          _t: norm(d.t), _q: norm(d.q), _a: norm(d.a), _c: norm(d.c),
+        }));
+        const LABEL = { var: "HAKKINIZ VAR", yok: "HAKKINIZ YOK", kosullu: "DURUMA GÖRE" };
+
+        function score(d, terms) {
+          let total = 0;
+          for (const term of terms) {
+            let best = 0;
+            if (d._t.startsWith(term)) best = 100;
+            else if (d._t.includes(term)) best = 70;
+            else if (d._a.includes(term)) best = 55;
+            else if (d._q.includes(term)) best = 40;
+            else if (d._c.includes(term)) best = 20;
+            if (!best) return 0;
+            total += best;
+          }
+          return total;
+        }
+
+        function search(q, limit = 8) {
+          const terms = norm(q).split(/\s+/).filter(Boolean);
+          if (!terms.length) return [];
+          return DATA.map((d) => ({ d, s: score(d, terms) }))
+            .filter((r) => r.s > 0)
+            .sort((a, b) => b.s - a.s || a.d._t.length - b.d._t.length)
+            .slice(0, limit)
+            .map((r) => r.d);
+        }
+
+        document.querySelectorAll("[data-search]").forEach((root) => {
+          const input = root.querySelector("input");
+          const out = root.querySelector("[data-results]");
+          if (!input || !out) return;
+          let active = -1;
+
+          const render = (list) => {
+            active = -1;
+            if (!input.value.trim()) { out.innerHTML = ""; return; }
+            if (!list.length) {
+              out.innerHTML = '<div class="empty">Eşleşen senaryo yok. <a href="/senaryolar/">Tüm listeye göz atın</a>.</div>';
+              return;
+            }
+            out.innerHTML = list
+              .map((d) => `<a href="/${d.s}/"><span class="r-title">${d.t}<span class="r-cat">${d.c}</span></span><span class="badge badge-${d.v}">${LABEL[d.v]}</span></a>`)
+              .join("");
+          };
+
+          input.addEventListener("input", () => render(search(input.value)));
+          input.addEventListener("focus", () => render(search(input.value)));
+
+          input.addEventListener("keydown", (e) => {
+            const items = [...out.querySelectorAll("a")];
+            if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+              if (!items.length) return;
+              e.preventDefault();
+              active = e.key === "ArrowDown"
+                ? (active + 1) % items.length
+                : (active - 1 + items.length) % items.length;
+              items.forEach((el, i) => el.classList.toggle("is-active", i === active));
+              items[active].scrollIntoView({ block: "nearest" });
+            } else if (e.key === "Enter") {
+              if (active >= 0 && items[active]) { e.preventDefault(); window.location.href = items[active].href; }
+              else if (items[0]) { e.preventDefault(); window.location.href = items[0].href; }
+            } else if (e.key === "Escape") {
+              input.value = ""; out.innerHTML = ""; input.blur();
+            }
+          });
+
+          document.addEventListener("click", (e) => {
+            if (!root.contains(e.target)) out.innerHTML = "";
+          });
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+            e.preventDefault();
+            document.querySelector("[data-search] input")?.focus();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

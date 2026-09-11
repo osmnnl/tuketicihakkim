@@ -1,0 +1,69 @@
+---
+import Base from "../../layouts/Base.astro";
+import CaseCard from "../../components/CaseCard.astro";
+import { cases } from "../../lib/cases";
+
+const rehber = cases.filter((c) => c.category === "Başvuru Yolu");
+---
+
+<Base
+  title="Tüketici başvuru rehberi — hakem heyeti mi, mahkeme mi?"
+  description="Tüketici Hakem Heyeti'ne mi Tüketici Mahkemesi'ne mi başvurmalısınız? Parasal sınır, e-Devlet başvurusu, süreler ve hangi belgeleri saklamanız gerektiği."
+  path="/basvuru-rehberi/"
+>
+  <div class="wrap narrow">
+    <section style="padding:44px 0 0">
+      <p class="eyebrow">Rehber</p>
+      <h1 style="font-size:clamp(28px,5vw,40px);letter-spacing:-.03em;margin:10px 0 14px">
+        Başvuruyu nereye, nasıl yaparsınız?
+      </h1>
+      <p style="color:var(--fg-dim);max-width:68ch;margin:0 0 8px">
+        Tüketici uyuşmazlıklarında yol dört adımda ilerler: önce karşı tarafa yazılı başvuru,
+        sonuç alınamazsa tutara göre Tüketici Hakem Heyeti veya Tüketici Mahkemesi.
+      </p>
+    </section>
+
+    <section class="sec">
+      <h2>Adım adım</h2>
+      <ol class="steps">
+        <li><strong>Yazılı başvuru.</strong> Satıcıya/hizmet sağlayıcıya talebinizi (iade, değişim, onarım, bedel indirimi) ve tutarı açıkça yazın. E-posta, KEP veya site formu kullanın — telefon görüşmesi ispat için zayıftır.</li>
+        <li><strong>Delilleri toplayın.</strong> Fatura, sözleşme, yazışma ekran görüntüleri, ürün fotoğrafı, servis giriş-çıkış formu.</li>
+        <li><strong>Tutarı ve mercii belirleyin.</strong> Uyuşmazlık tutarı, o yıl için ilan edilen parasal sınırın altındaysa Tüketici Hakem Heyeti'ne başvuru zorunludur; üstündeyse Tüketici Mahkemesi görevlidir.</li>
+        <li><strong>e-Devlet'ten başvurun.</strong> Tüketici Bilgi Sistemi (TÜBİS) üzerinden ücretsiz ve avukatsız başvuru yapabilirsiniz.</li>
+        <li><strong>Karara itiraz süresini takip edin.</strong> Hakem heyeti kararına karşı tebliğden itibaren 15 gün içinde Tüketici Mahkemesine itiraz edilebilir.</li>
+      </ol>
+    </section>
+
+    <section class="sec">
+      <h2>Parasal sınır hakkında</h2>
+      <p>
+        Tüketici hakem heyetlerinin görev sınırı her yıl yeniden değerleme oranına göre güncellenir ve
+        Aralık ayında Resmî Gazete'de yayımlanan tebliğle ilan edilir. Bu sitede sabit bir rakam
+        verilmez — başvurudan önce <strong>güncel tebliği</strong> Ticaret Bakanlığı sayfasından
+        doğrulayın. Yanlış mercie yapılan başvuru süre kaybettirir.
+      </p>
+    </section>
+
+    <section class="sec">
+      <h2>Maliyet</h2>
+      <ul class="checks">
+        <li>Tüketici hakem heyeti başvurusu ücretsizdir.</li>
+        <li>Avukat zorunlu değildir; başvuruyu kendiniz yapabilirsiniz.</li>
+        <li>Tüketici mahkemelerinde açılan davalar harçtan muaftır.</li>
+        <li>Bilirkişi gideri gerektiren dosyalarda gider avansı istenebilir.</li>
+      </ul>
+    </section>
+
+    <section class="sec" style="border-bottom:0">
+      <h2>İlgili senaryolar</h2>
+      <div class="grid grid-2">
+        {rehber.map((c) => <CaseCard item={c} />)}
+      </div>
+    </section>
+
+    <div class="disclaimer" style="margin-bottom:40px">
+      Bu rehber genel bilgilendirme amaçlıdır. Parasal sınırlar ve süreler değişebilir; başvuru öncesi
+      güncel mevzuatı kontrol edin.
+    </div>
+  </div>
+</Base>
