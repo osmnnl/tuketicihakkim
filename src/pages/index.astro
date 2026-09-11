@@ -2,28 +2,9 @@
 import Base from "../layouts/Base.astro";
 import SearchBox from "../components/SearchBox.astro";
 import CaseCard from "../components/CaseCard.astro";
+import HeroNetwork from "../components/HeroNetwork.astro";
 import { cases, categories } from "../lib/cases";
 import { url, absUrl } from "../lib/url";
-
-// Deterministik "senaryo bulutu" arka planı (build anında hesaplanır, JS yok)
-let seed = 20260911;
-const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
-// Bulut yalnız sabit sayıda kısa başlık taşır — senaryo sayısı arttıkça sayfa şişmesin
-const CLOUD_LIMIT = 110;
-const cloudSource = cases
-  .flatMap((c) => [c.title, ...c.aliases])
-  .filter((t) => t.length <= 34);
-const cloudStep = Math.max(1, Math.floor(cloudSource.length / CLOUD_LIMIT));
-const cloud = cloudSource
-  .filter((_, i) => i % cloudStep === 0)
-  .slice(0, CLOUD_LIMIT)
-  .map((text) => ({
-    text,
-    left: 2 + rnd() * 96,
-    top: 2 + rnd() * 96,
-    size: 10 + rnd() * 7,
-    opacity: 0.22 + rnd() * 0.5,
-  }));
 
 const chips = [
   "internetten-aldigim-urunu-iade",
@@ -77,11 +58,7 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      {cloud.map((w) => (
-        <span style={`left:${w.left}%;top:${w.top}%;font-size:${w.size}px;opacity:${w.opacity}`}>{w.text}</span>
-      ))}
-    </div>
+    <HeroNetwork />
     <div class="wrap">
       <h1>Hakkım var mı?</h1>
       <p class="lede">

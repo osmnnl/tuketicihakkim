@@ -1,0 +1,212 @@
+---
+import { cases, frames } from "../lib/cases";
+
+/**
+ * Hero arka planı: senaryo başlıklarından örülmüş konu ağı.
+ * Düğümler kategori kümelerine yerleşir, aynı kümedeki komşular çizgiyle bağlanır.
+ * Tamamen canvas'a çizilir — DOM'a yüzlerce element eklemez.
+ */
+const NODE_LIMIT = 300;
+
+// Kategoriye göre grupla, her gruptan orantılı örneklem al (deterministik)
+const byFrame = new Map<string, string[]>();
+for (const c of cases) {
+  const list = byFrame.get(c.frame) ?? [];
+  list.push(c.title.length <= 30 ? c.title : c.aliases[0] ?? c.title);
+  byFrame.set(c.frame, list);
+}
+
+const total = cases.length;
+const nodes: { t: string; v: string; f: string }[] = [];
+for (const [frame, titles] of byFrame) {
+  const quota = Math.max(3, Math.round((titles.length / total) * NODE_LIMIT));
+  const step = Math.max(1, Math.floor(titles.length / quota));
+  for (let i = 0; i < titles.length && nodes.length < NODE_LIMIT; i += step) {
+    const c = cases.find((x) => x.frame === frame && (x.title === titles[i] || x.aliases[0] === titles[i]));
+    nodes.push({ t: titles[i], v: c?.verdict ?? "var", f: frame });
+  }
+}
+
+const frameIds = [...byFrame.keys()];
+const payload = { nodes, frames: frameIds, labels: frameIds.map((f) => frames[f].category) };
+---
+
+<div class="hero-net" aria-hidden="true">
+  <canvas id="hero-net-canvas"></canvas>
+</div>
+
+<script type="application/json" id="hero-net-data" is:inline set:html={JSON.stringify(payload)} />
+
+<script is:inline>
+  (() => {
+    const canvas = document.getElementById("hero-net-canvas");
+    const dataEl = document.getElementById("hero-net-data");
+    if (!canvas || !dataEl) return;
+
+    const { nodes, frames, labels } = JSON.parse(dataEl.textContent);
+    const ctx = canvas.getContext("2d");
+
+    // Deterministik rastgelelik — her yüklemede aynı ağ çizilir
+    const rng = (seed) => () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+
+    // Tek renk ailesi: nötr taban + seyrek yeşil vurgu. Doygun çok renk gürültü yapıyor.
+    const PALETTE = {
+      dark:  { base: "148,158,175", accent: "74,222,128", edge: "160,175,195" },
+      light: { base: "90,100,115",  accent: "18,138,69",  edge: "70,85,105" },
+    };
+
+    const isLight = () => {
+      const t = document.documentElement.dataset.theme;
+      if (t === "light") return true;
+      if (t === "dark") return false;
+      return window.matchMedia("(prefers-color-scheme: light)").matches;
+    };
+
+    let placed = [];
+
+    function layout(w, h) {
+      const rand = rng(20260911);
+      const compact = w < 760;
+      const count = compact ? Math.round(nodes.length * 0.30) : nodes.length;
+
+      // Her kategori için bir küme merkezi — altın açıyla dağıtılır
+      const centers = frames.map((_, i) => {
+        const a = i * 2.399963;
+        const r = 0.30 + 0.26 * Math.sqrt((i + 0.6) / frames.length);
+        return { x: 0.5 + Math.cos(a) * r * 1.30, y: 0.5 + Math.sin(a) * r * 1.02 };
+      });
+
+      const out = [];
+
+      // Kategori adları: her kümenin merkezinde büyük ve belirgin "hub" düğümü
+      centers.forEach((c, ci) => {
+        const x = c.x * w, y = c.y * h;
+        const dx = (x / w - 0.5) / 0.5, dy = (y / h - 0.5) / 0.5;
+        const dist = Math.min(1, Math.hypot(dx, dy));
+        if (dist < (compact ? 0.52 : 0.40)) return;
+        out.push({
+          t: labels[ci], f: frames[ci], x, y,
+          size: compact ? 13 : 20, alpha: (compact ? 0.20 : 0.30) + 0.22 * dist,
+          cluster: ci, accent: true, hub: true,
+        });
+      });
+
+      for (let i = 0; i < count; i++) {
+        const n = nodes[Math.floor((i * nodes.length) / count)];
+        const ci = frames.indexOf(n.f);
+        const c = centers[ci < 0 ? 0 : ci];
+        const ang = rand() * Math.PI * 2;
+        const rad = Math.pow(rand(), 0.6) * (compact ? 0.22 : 0.19);
+        let x = (c.x + Math.cos(ang) * rad * 1.45) * w;
+        let y = (c.y + Math.sin(ang) * rad * 1.1) * h;
+
+        // merkezden uzaklık (0 = tam orta, 1 = kenar)
+        const dx = (x / w - 0.5) / 0.5, dy = (y / h - 0.5) / 0.5;
+        const dist = Math.min(1, Math.hypot(dx, dy));
+
+        // ortadaki metin alanına düşen düğümleri dışarı it
+        const hole = compact ? 0.52 : 0.42;
+        if (dist < hole) {
+          const push = hole / Math.max(dist, 0.06);
+          x = w / 2 + (x - w / 2) * push;
+          y = h / 2 + (y - h / 2) * push;
+        }
+
+        const size = (compact ? 9.5 : 11) + rand() * (compact ? 3 : 5.5);
+        // kenara yaklaştıkça hafifçe belirginleşsin, merkeze yakın olan iyice sönsün
+        const alpha = (0.20 + rand() * 0.36) * (0.45 + 0.75 * Math.min(1, dist * 1.4));
+        out.push({ ...n, x, y, size, alpha, cluster: ci, accent: rand() < 0.18 });
+      }
+      return out;
+    }
+
+    function draw() {
+      const host = canvas.parentElement;
+      const w = host.clientWidth;
+      const h = host.clientHeight;
+      if (!w || !h) return;
+
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+
+      placed = layout(w, h);
+      const pal = isLight() ? PALETTE.light : PALETTE.dark;
+      const font = getComputedStyle(document.body).fontFamily;
+
+      // --- kenarlar: aynı kümedeki yakın komşular + kümeler arası köprüler ---
+      const maxLink = Math.min(w, h) * (w < 760 ? 0.62 : 0.52);
+      ctx.lineWidth = 0.75;
+      for (let i = 0; i < placed.length; i++) {
+        const a = placed[i];
+        let links = 0;
+        for (let j = i + 1; j < placed.length && links < 5; j++) {
+          const b = placed[j];
+          const sameCluster = a.cluster === b.cluster;
+          const d = Math.hypot(a.x - b.x, a.y - b.y);
+          const limit = sameCluster ? maxLink : maxLink * 0.72;
+          if (d > limit) continue;
+          const mx = (a.x + b.x) / 2 / w - 0.5, my = (a.y + b.y) / 2 / h - 0.5;
+          const mid = Math.min(1, Math.hypot(mx / 0.5, my / 0.5));
+          const strength = (1 - d / limit) * (sameCluster ? 0.62 : 0.34) * (0.40 + 0.85 * mid);
+          ctx.strokeStyle = `rgba(${pal.edge},${strength.toFixed(3)})`;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+          links++;
+        }
+      }
+
+      // --- düğüm etiketleri ---
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      for (const n of placed) {
+        ctx.font = `${n.hub ? 650 : 500} ${n.size}px ${font}`;
+        ctx.globalAlpha = n.alpha;
+        ctx.fillStyle = `rgb(${n.accent ? pal.accent : pal.base})`;
+        ctx.fillText(n.t, n.x, n.y);
+      }
+      ctx.globalAlpha = 1;
+
+      // --- merkez maskesi: başlık ve arama kutusu okunur kalsın ---
+      const narrow = w < 760;
+      const g = ctx.createRadialGradient(
+        w / 2, h * 0.47, 0,
+        w / 2, h * 0.47, Math.max(w, h) * (narrow ? 0.72 : 0.52)
+      );
+      g.addColorStop(0, "rgba(0,0,0,1)");
+      g.addColorStop(narrow ? 0.42 : 0.30, "rgba(0,0,0,0.97)");
+      g.addColorStop(narrow ? 0.68 : 0.58, "rgba(0,0,0,0.62)");
+      g.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, w, h);
+      ctx.globalCompositeOperation = "source-over";
+    }
+
+    let raf = 0;
+    const redraw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
+
+    draw();
+
+    let lastW = window.innerWidth;
+    window.addEventListener("resize", () => {
+      // mobilde adres çubuğu kaynaklı yükseklik değişimlerinde yeniden çizme
+      if (Math.abs(window.innerWidth - lastW) < 40) return;
+      lastW = window.innerWidth;
+      redraw();
+    });
+
+    // tema değişiminde renkleri güncelle
+    new MutationObserver(redraw).observe(document.documentElement, {
+      attributes: true, attributeFilter: ["data-theme"],
+    });
+    window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", redraw);
+    document.fonts?.ready.then(redraw);
+  })();
+</script>
