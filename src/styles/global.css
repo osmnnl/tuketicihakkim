@@ -359,9 +359,10 @@ ol.steps li::before {
   /* arama sonuçları: mobilde daha okunur satırlar */
   .search-input-row { padding: 14px 15px; }
   .search .kbd { display: none; }
-  .results { max-height: 55vh; }
-  .results a { flex-direction: column; align-items: flex-start; gap: 7px; padding: 13px 15px; }
-  .results .r-title { font-size: 15px; }
+  .results { max-height: 52vh; }
+  .results a { flex-direction: column; align-items: flex-start; gap: 6px; padding: 11px 15px; }
+  .results .r-title { font-size: 14.5px; line-height: 1.4; }
+  .results .badge { font-size: 10.5px; padding: 4px 9px; }
 
   .pager { flex-direction: column; gap: 10px; }
   .pager .next { text-align: left; }
