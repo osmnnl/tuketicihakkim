@@ -4,6 +4,7 @@ import SearchBox from "../components/SearchBox.astro";
 import CaseCard from "../components/CaseCard.astro";
 import VerdictBadge from "../components/VerdictBadge.astro";
 import { cases, related, neighbours, verdictLabel, type Case } from "../lib/cases";
+import { url, absUrl } from "../lib/url";
 
 export function getStaticPaths() {
   return cases.map((item) => ({ params: { slug: item.slug }, props: { item } }));
@@ -24,8 +25,8 @@ const jsonLd = {
     {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Ana sayfa", item: "https://tuketicihakkim.com/" },
-        { "@type": "ListItem", position: 2, name: "Senaryolar", item: "https://tuketicihakkim.com/senaryolar/" },
+        { "@type": "ListItem", position: 1, name: "Ana sayfa", item: absUrl("/") },
+        { "@type": "ListItem", position: 2, name: "Senaryolar", item: absUrl("/senaryolar/") },
         { "@type": "ListItem", position: 3, name: item.title },
       ],
     },
@@ -51,8 +52,8 @@ const jsonLd = {
 >
   <div class="wrap narrow">
     <nav class="crumbs">
-      <a href="/">Ana sayfa</a><span>/</span>
-      <a href="/senaryolar/">Senaryolar</a><span>/</span>
+      <a href={url("/")}>Ana sayfa</a><span>/</span>
+      <a href={url("/senaryolar/")}>Senaryolar</a><span>/</span>
       {item.category}
     </nav>
 
@@ -136,15 +137,15 @@ const jsonLd = {
           süre dolmadan bir avukata danışın.
         </p>
       </div>
-      <a class="btn btn-ghost" href="/basvuru-rehberi/">Başvuru rehberi</a>
+      <a class="btn btn-ghost" href={url("/basvuru-rehberi/")}>Başvuru rehberi</a>
     </div>
 
     <nav class="pager">
       {prev ? (
-        <a href={`/${prev.slug}/`}><small>← Önceki</small>{prev.title}</a>
+        <a href={url(`/${prev.slug}/`)}><small>← Önceki</small>{prev.title}</a>
       ) : <span />}
       {next ? (
-        <a class="next" href={`/${next.slug}/`}><small>Sonraki →</small>{next.title}</a>
+        <a class="next" href={url(`/${next.slug}/`)}><small>Sonraki →</small>{next.title}</a>
       ) : <span />}
     </nav>
 

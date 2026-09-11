@@ -55,12 +55,29 @@ referanslarını yakalar; `npm run build` bunu otomatik çalıştırır.
 
 ## Yayınlama
 
-Çıktı tamamen statik. Cloudflare Pages / Netlify / GitHub Pages ile çalışır.
+Canlı: **https://osmnnl.github.io/tuketicihakkim/**
 
-**Cloudflare Pages:** Build command `npm run build`, output directory `dist`.
+`master` dalına her push, [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
+üzerinden GitHub Pages'e otomatik dağıtılır.
 
-Alan adını değiştirirseniz `astro.config.mjs` içindeki `site` ile
-`src/pages/sitemap.xml.ts` ve `public/robots.txt` dosyalarındaki adresi güncelleyin.
+Adres ve alt dizin iki ortam değişkeniyle yönetilir — kod içinde sabit adres yoktur:
+
+| Değişken | Varsayılan | Açıklama |
+| --- | --- | --- |
+| `SITE_URL` | `https://osmnnl.github.io` | Kök adres |
+| `BASE_PATH` | `/tuketicihakkim` | Alt dizin |
+
+**Kendi alan adınıza taşırken** (örn. `tuketicihakkim.com`) yalnızca şunu çalıştırın:
+
+```bash
+SITE_URL=https://tuketicihakkim.com BASE_PATH=/ npm run build
+```
+
+Sitemap, robots.txt, canonical etiketleri ve tüm dahili bağlantılar buna göre üretilir.
+(GitHub Pages'te özel alan adı kullanacaksanız workflow'a bu değişkenleri ekleyip
+`public/CNAME` dosyası oluşturun.)
+
+Cloudflare Pages / Netlify için: build `npm run build`, output `dist`.
 
 ## Yapı
 

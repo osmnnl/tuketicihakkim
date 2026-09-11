@@ -3,6 +3,7 @@ import Base from "../../layouts/Base.astro";
 import SearchBox from "../../components/SearchBox.astro";
 import VerdictBadge from "../../components/VerdictBadge.astro";
 import { cases, categories } from "../../lib/cases";
+import { url } from "../../lib/url";
 ---
 
 <Base
@@ -35,7 +36,7 @@ import { cases, categories } from "../../lib/cases";
         <div class="block-head"><h2>{cat}</h2></div>
         <div class="grid grid-2">
           {cases.filter((c) => c.category === cat).map((c) => (
-            <a class="card" href={`/${c.slug}/`}>
+            <a class="card" href={url(`/${c.slug}/`)}>
               <VerdictBadge verdict={c.verdict} />
               <h3>{c.title}</h3>
               <p>{c.summary}</p>

@@ -1,13 +1,15 @@
 import type { APIRoute } from "astro";
 import { cases } from "../lib/cases";
 
-const SITE = "https://tuketicihakkim.com";
+const SITE = (import.meta.env.SITE ?? "").replace(/\/$/, "");
+const BASE = import.meta.env.BASE_URL;
+const abs = (p: string) => SITE + (BASE + p.replace(/^\/+/, "")).replace(/\/{2,}/g, "/");
 const statics = ["/", "/senaryolar/", "/basvuru-rehberi/", "/hakkinda/"];
 
 export const GET: APIRoute = () => {
   const urls = [
-    ...statics.map((p) => ({ loc: SITE + p, lastmod: new Date().toISOString().slice(0, 10), pri: p === "/" ? "1.0" : "0.7" })),
-    ...cases.map((c) => ({ loc: `${SITE}/${c.slug}/`, lastmod: c.updated, pri: "0.8" })),
+    ...statics.map((p) => ({ loc: abs(p), lastmod: new Date().toISOString().slice(0, 10), pri: p === "/" ? "1.0" : "0.7" })),
+    ...cases.map((c) => ({ loc: abs(`/${c.slug}/`), lastmod: c.updated, pri: "0.8" })),
   ];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

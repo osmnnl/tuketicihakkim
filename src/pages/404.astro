@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import SearchBox from "../components/SearchBox.astro";
+import { url } from "../lib/url";
 ---
 <Base title="Sayfa bulunamadı — Tüketici Hakkım" description="Aradığınız sayfa bulunamadı." path="/404/">
   <div class="wrap narrow" style="padding:80px 0;text-align:center">
@@ -10,6 +11,6 @@ import SearchBox from "../components/SearchBox.astro";
       Aradığınız adres taşınmış olabilir. Senaryo sözlüğünden arayarak devam edebilirsiniz.
     </p>
     <SearchBox />
-    <p style="margin-top:26px"><a href="/senaryolar/">Tüm senaryolara göz atın →</a></p>
+    <p style="margin-top:26px"><a href={url("/senaryolar/")}>Tüm senaryolara göz atın →</a></p>
   </div>
 </Base>

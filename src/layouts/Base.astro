@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { searchIndex } from "../lib/cases";
+import { url, absUrl, BASE } from "../lib/url";
 
 interface Props {
   title: string;
@@ -10,8 +11,7 @@ interface Props {
 }
 
 const { title, description, path, jsonLd } = Astro.props;
-const site = "https://tuketicihakkim.com";
-const canonical = site + path;
+const canonical = absUrl(path);
 const nav = [
   { href: "/", label: "Ana sayfa" },
   { href: "/senaryolar/", label: "Senaryolar" },
@@ -36,8 +36,8 @@ const nav = [
     <meta property="og:locale" content="tr_TR" />
     <meta name="twitter:card" content="summary" />
     <meta name="theme-color" content="#0c0d10" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="sitemap" href="/sitemap.xml" />
+    <link rel="icon" href={url("/favicon.svg")} type="image/svg+xml" />
+    <link rel="sitemap" href={url("/sitemap.xml")} />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <script is:inline>
       (() => {
@@ -51,12 +51,12 @@ const nav = [
   <body>
     <header class="site-header">
       <div class="inner">
-        <a class="brand" href="/">
+        <a class="brand" href={url("/")}>
           Tüketici Hakkım<small>Senaryo Sözlüğü</small>
         </a>
         <nav class="site-nav">
           {nav.map((n) => (
-            <a href={n.href} aria-current={path === n.href ? "page" : undefined}>{n.label}</a>
+            <a href={url(n.href)} aria-current={path === n.href ? "page" : undefined}>{n.label}</a>
           ))}
         </nav>
         <button class="icon-btn" id="theme-toggle" type="button" aria-label="Temayı değiştir">◐</button>
@@ -70,9 +70,9 @@ const nav = [
     <footer class="site-footer">
       <div class="wrap">
         <div class="cols">
-          <a href="/senaryolar/">Tüm senaryolar</a>
-          <a href="/basvuru-rehberi/">Başvuru rehberi</a>
-          <a href="/hakkinda/">Hakkında</a>
+          <a href={url("/senaryolar/")}>Tüm senaryolar</a>
+          <a href={url("/basvuru-rehberi/")}>Başvuru rehberi</a>
+          <a href={url("/hakkinda/")}>Hakkında</a>
           <a href="https://tuketicisikayeti.ticaret.gov.tr/" rel="nofollow noopener" target="_blank">Ticaret Bakanlığı</a>
           <a href="https://www.turkiye.gov.tr/" rel="nofollow noopener" target="_blank">e-Devlet</a>
         </div>
@@ -85,7 +85,7 @@ const nav = [
       </div>
     </footer>
 
-    <script type="application/json" id="search-index" is:inline set:html={JSON.stringify(searchIndex)} />
+    <script type="application/json" id="search-index" data-base={BASE} is:inline set:html={JSON.stringify(searchIndex)} />
 
     <script is:inline>
       // ---- tema ----
@@ -102,6 +102,7 @@ const nav = [
 
       const idxEl = document.getElementById("search-index");
       if (idxEl) {
+        const BASE = idxEl.dataset.base || "/";
         const DATA = JSON.parse(idxEl.textContent).map((d) => ({
           ...d,
           _t: norm(d.t), _q: norm(d.q), _a: norm(d.a), _c: norm(d.c),
@@ -143,11 +144,11 @@ const nav = [
             active = -1;
             if (!input.value.trim()) { out.innerHTML = ""; return; }
             if (!list.length) {
-              out.innerHTML = '<div class="empty">Eşleşen senaryo yok. <a href="/senaryolar/">Tüm listeye göz atın</a>.</div>';
+              out.innerHTML = `<div class="empty">Eşleşen senaryo yok. <a href="${BASE}senaryolar/">Tüm listeye göz atın</a>.</div>`;
               return;
             }
             out.innerHTML = list
-              .map((d) => `<a href="/${d.s}/"><span class="r-title">${d.t}<span class="r-cat">${d.c}</span></span><span class="badge badge-${d.v}">${LABEL[d.v]}</span></a>`)
+              .map((d) => `<a href="${BASE}${d.s}/"><span class="r-title">${d.t}<span class="r-cat">${d.c}</span></span><span class="badge badge-${d.v}">${LABEL[d.v]}</span></a>`)
               .join("");
           };
 
