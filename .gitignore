@@ -8,3 +8,6 @@ dist/
 
 # yerel araç ayarları
 .claude/
+
+# geçici içerik partileri
+.batches/

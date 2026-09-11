@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import { searchIndex } from "../lib/cases";
 import { url, absUrl, BASE } from "../lib/url";
 
 interface Props {
@@ -85,7 +84,8 @@ const nav = [
       </div>
     </footer>
 
-    <script type="application/json" id="search-index" data-base={BASE} is:inline set:html={JSON.stringify(searchIndex)} />
+    <link rel="preload" as="fetch" href={url("/search-index.json")} crossorigin="anonymous" />
+    <span id="search-index" data-base={BASE} data-src={url("/search-index.json")} hidden></span>
 
     <script is:inline>
       // ---- tema ----
@@ -103,10 +103,25 @@ const nav = [
       const idxEl = document.getElementById("search-index");
       if (idxEl) {
         const BASE = idxEl.dataset.base || "/";
-        const DATA = JSON.parse(idxEl.textContent).map((d) => ({
-          ...d,
-          _t: norm(d.t), _q: norm(d.q), _a: norm(d.a), _c: norm(d.c),
-        }));
+        let DATA = null;
+        let loading = null;
+
+        /** İndeks yalnız ilk arama etkileşiminde indirilir. */
+        function loadIndex() {
+          if (DATA) return Promise.resolve(DATA);
+          if (loading) return loading;
+          loading = fetch(idxEl.dataset.src)
+            .then((r) => r.json())
+            .then((rows) => {
+              DATA = rows.map((d) => ({
+                ...d,
+                _t: norm(d.t), _q: norm(d.q), _a: norm(d.a), _c: norm(d.c),
+              }));
+              return DATA;
+            })
+            .catch(() => (DATA = []));
+          return loading;
+        }
         const LABEL = { var: "HAKKINIZ VAR", yok: "HAKKINIZ YOK", kosullu: "DURUMA GÖRE" };
 
         function score(d, terms) {
@@ -126,7 +141,7 @@ const nav = [
 
         function search(q, limit = 8) {
           const terms = norm(q).split(/\s+/).filter(Boolean);
-          if (!terms.length) return [];
+          if (!terms.length || !DATA) return [];
           return DATA.map((d) => ({ d, s: score(d, terms) }))
             .filter((r) => r.s > 0)
             .sort((a, b) => b.s - a.s || a.d._t.length - b.d._t.length)
@@ -152,8 +167,9 @@ const nav = [
               .join("");
           };
 
-          input.addEventListener("input", () => render(search(input.value)));
-          input.addEventListener("focus", () => render(search(input.value)));
+          const run = () => loadIndex().then(() => render(search(input.value)));
+          input.addEventListener("input", run);
+          input.addEventListener("focus", () => { loadIndex(); if (input.value) run(); });
 
           input.addEventListener("keydown", (e) => {
             const items = [...out.querySelectorAll("a")];
