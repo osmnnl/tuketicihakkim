@@ -120,6 +120,7 @@ a:hover { text-decoration: underline; }
 .hero-net {
   position: absolute; inset: -8% -4%;
   pointer-events: none; user-select: none;
+  touch-action: pan-y;            /* mobilde sayfa kaydırması engellenmesin */
   contain: strict;
 }
 .hero-net canvas { display: block; width: 100%; height: 100%; }

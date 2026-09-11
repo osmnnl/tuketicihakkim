@@ -120,64 +120,118 @@ const payload = { nodes, frames: frameIds, labels: frameIds.map((f) => frames[f]
       return out;
     }
 
-    function draw() {
+    let nodesP = [];   // yerleştirilmiş düğümler
+    let edges = [];    // bir kez hesaplanan bağlantılar
+    let W = 0, H = 0, DPR = 1;
+    let pan = { x: 0, y: 0 };          // sürükleme kaydırması
+    let target = { x: 0, y: 0 };       // fare parallax hedefi
+    let ease = { x: 0, y: 0 };         // yumuşatılmış parallax
+    let intro = 0;                     // 0→1 açılış ilerlemesi
+    let running = false;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /** Yerleşim + bağlantı listesi: kare başına değil, ölçü değişince hesaplanır. */
+    function build() {
       const host = canvas.parentElement;
-      const w = host.clientWidth;
-      const h = host.clientHeight;
-      if (!w || !h) return;
+      W = host.clientWidth;
+      H = host.clientHeight;
+      if (!W || !H) return false;
 
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      canvas.style.width = w + "px";
-      canvas.style.height = h + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, w, h);
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = W * DPR;
+      canvas.height = H * DPR;
+      canvas.style.width = W + "px";
+      canvas.style.height = H + "px";
 
-      placed = layout(w, h);
-      const pal = isLight() ? PALETTE.light : PALETTE.dark;
-      const font = getComputedStyle(document.body).fontFamily;
+      nodesP = layout(W, H);
 
-      // --- kenarlar: aynı kümedeki yakın komşular + kümeler arası köprüler ---
-      const maxLink = Math.min(w, h) * (w < 760 ? 0.62 : 0.52);
-      ctx.lineWidth = 0.75;
-      for (let i = 0; i < placed.length; i++) {
-        const a = placed[i];
+      // her düğüme kendi yörünge fazı ve hızı
+      const rand = rng(97531);
+      for (const n of nodesP) {
+        n.bx = n.x; n.by = n.y;                      // taban konum
+        n.ph = rand() * Math.PI * 2;                 // faz
+        n.sp = 0.10 + rand() * 0.22;                 // salınım hızı
+        n.amp = (n.hub ? 5 : 9) + rand() * 10;       // genlik
+        n.depth = 0.35 + rand() * 0.9;               // parallax derinliği
+      }
+
+      // bağlantılar bir kez: düğümler yavaş hareket ettiğinden sabit kalabilir
+      edges = [];
+      const maxLink = Math.min(W, H) * (W < 760 ? 0.62 : 0.52);
+      for (let i = 0; i < nodesP.length; i++) {
+        const a = nodesP[i];
         let links = 0;
-        for (let j = i + 1; j < placed.length && links < 5; j++) {
-          const b = placed[j];
-          const sameCluster = a.cluster === b.cluster;
-          const d = Math.hypot(a.x - b.x, a.y - b.y);
-          const limit = sameCluster ? maxLink : maxLink * 0.72;
+        for (let j = i + 1; j < nodesP.length && links < 5; j++) {
+          const b = nodesP[j];
+          const same = a.cluster === b.cluster;
+          const d = Math.hypot(a.bx - b.bx, a.by - b.by);
+          const limit = same ? maxLink : maxLink * 0.72;
           if (d > limit) continue;
-          const mx = (a.x + b.x) / 2 / w - 0.5, my = (a.y + b.y) / 2 / h - 0.5;
+          const mx = (a.bx + b.bx) / 2 / W - 0.5, my = (a.by + b.by) / 2 / H - 0.5;
           const mid = Math.min(1, Math.hypot(mx / 0.5, my / 0.5));
-          const strength = (1 - d / limit) * (sameCluster ? 0.62 : 0.34) * (0.40 + 0.85 * mid);
-          ctx.strokeStyle = `rgba(${pal.edge},${strength.toFixed(3)})`;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
+          edges.push({ a: i, b: j, w: (1 - d / limit) * (same ? 0.62 : 0.34) * (0.40 + 0.85 * mid) });
           links++;
         }
       }
+      return true;
+    }
 
-      // --- düğüm etiketleri ---
+    function frame(t) {
+      const pal = isLight() ? PALETTE.light : PALETTE.dark;
+      const font = getComputedStyle(document.body).fontFamily;
+      const time = t / 1000;
+
+      if (intro < 1) intro = Math.min(1, intro + 0.019);
+      const io = reduce ? 1 : 1 - Math.pow(1 - intro, 3);   // easeOutCubic
+
+      // fare parallax'ını yumuşat
+      ease.x += (target.x - ease.x) * 0.06;
+      ease.y += (target.y - ease.y) * 0.06;
+
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      // --- güncel konumlar ---
+      for (const n of nodesP) {
+        const drift = reduce ? 0 : 1;
+        const ox = Math.cos(time * n.sp + n.ph) * n.amp * drift;
+        const oy = Math.sin(time * n.sp * 0.82 + n.ph * 1.4) * n.amp * 0.7 * drift;
+        const px = ease.x * n.depth * 26 + pan.x * n.depth;
+        const py = ease.y * n.depth * 20 + pan.y * n.depth;
+        // açılışta düğümler merkezden dışa doğru yerleşir
+        const sx = W / 2 + (n.bx - W / 2) * (0.72 + 0.28 * io);
+        const sy = H / 2 + (n.by - H / 2) * (0.72 + 0.28 * io);
+        n.cx = sx + ox + px;
+        n.cy = sy + oy + py;
+      }
+
+      // --- kenarlar ---
+      ctx.lineWidth = 0.75;
+      for (const e of edges) {
+        const a = nodesP[e.a], b = nodesP[e.b];
+        ctx.strokeStyle = `rgba(${pal.edge},${(e.w * io).toFixed(3)})`;
+        ctx.beginPath();
+        ctx.moveTo(a.cx, a.cy);
+        ctx.lineTo(b.cx, b.cy);
+        ctx.stroke();
+      }
+
+      // --- etiketler ---
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      for (const n of placed) {
+      for (const n of nodesP) {
         ctx.font = `${n.hub ? 650 : 500} ${n.size}px ${font}`;
-        ctx.globalAlpha = n.alpha;
+        ctx.globalAlpha = n.alpha * io;
         ctx.fillStyle = `rgb(${n.accent ? pal.accent : pal.base})`;
-        ctx.fillText(n.t, n.x, n.y);
+        ctx.fillText(n.t, n.cx, n.cy);
       }
       ctx.globalAlpha = 1;
 
-      // --- merkez maskesi: başlık ve arama kutusu okunur kalsın ---
-      const narrow = w < 760;
+      // --- merkez maskesi ---
+      const narrow = W < 760;
       const g = ctx.createRadialGradient(
-        w / 2, h * 0.47, 0,
-        w / 2, h * 0.47, Math.max(w, h) * (narrow ? 0.72 : 0.52)
+        W / 2, H * 0.47, 0,
+        W / 2, H * 0.47, Math.max(W, H) * (narrow ? 0.72 : 0.52)
       );
       g.addColorStop(0, "rgba(0,0,0,1)");
       g.addColorStop(narrow ? 0.42 : 0.30, "rgba(0,0,0,0.97)");
@@ -185,28 +239,76 @@ const payload = { nodes, frames: frameIds, labels: frameIds.map((f) => frames[f]
       g.addColorStop(1, "rgba(0,0,0,0)");
       ctx.globalCompositeOperation = "destination-out";
       ctx.fillStyle = g;
-      ctx.fillRect(0, 0, w, h);
+      ctx.fillRect(0, 0, W, H);
       ctx.globalCompositeOperation = "source-over";
+
+      if (running) requestAnimationFrame(frame);
     }
 
-    let raf = 0;
-    const redraw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
+    function start() {
+      if (!build()) return;
+      if (running) return;
+      running = true;
+      requestAnimationFrame(frame);
+    }
 
-    draw();
+    start();
+
+    // --- fare parallax ---
+    const host = canvas.parentElement;
+    if (!reduce && window.matchMedia("(pointer: fine)").matches) {
+      window.addEventListener("pointermove", (e) => {
+        const r = host.getBoundingClientRect();
+        if (e.clientY > r.bottom) return;
+        target.x = (e.clientX / window.innerWidth - 0.5) * 2;
+        target.y = (e.clientY / Math.max(r.height, 1) - 0.5) * 2;
+      }, { passive: true });
+    }
+
+    // --- sürükleyerek kaydırma (yalnız imleçli cihazlarda; mobilde sayfa kaydırmasını bozmasın) ---
+    if (window.matchMedia("(pointer: fine)").matches) {
+      host.style.pointerEvents = "auto";
+      host.style.cursor = "grab";
+      let drag = null;
+      host.addEventListener("pointerdown", (e) => {
+        drag = { x: e.clientX, y: e.clientY, px: pan.x, py: pan.y };
+        host.style.cursor = "grabbing";
+        host.setPointerCapture(e.pointerId);
+      });
+      host.addEventListener("pointermove", (e) => {
+        if (!drag) return;
+        pan.x = drag.px + (e.clientX - drag.x);
+        pan.y = drag.py + (e.clientY - drag.y);
+      });
+      const end = () => { drag = null; host.style.cursor = "grab"; };
+      host.addEventListener("pointerup", end);
+      host.addEventListener("pointercancel", end);
+    }
+
+    // --- sekme görünmezken döngüyü durdur (pil/CPU) ---
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) { running = false; }
+      else if (!running) { running = true; requestAnimationFrame(frame); }
+    });
+
+    // --- görünürlük dışına çıkınca da durdur ---
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => {
+        const visible = entries[0].isIntersecting;
+        if (!visible) running = false;
+        else if (!running && !document.hidden) { running = true; requestAnimationFrame(frame); }
+      }, { threshold: 0 }).observe(host);
+    }
 
     let lastW = window.innerWidth;
     window.addEventListener("resize", () => {
-      // mobilde adres çubuğu kaynaklı yükseklik değişimlerinde yeniden çizme
       if (Math.abs(window.innerWidth - lastW) < 40) return;
       lastW = window.innerWidth;
-      redraw();
+      pan = { x: 0, y: 0 };
+      build();
     });
 
-    // tema değişiminde renkleri güncelle
-    new MutationObserver(redraw).observe(document.documentElement, {
-      attributes: true, attributeFilter: ["data-theme"],
-    });
-    window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", redraw);
-    document.fonts?.ready.then(redraw);
+    // tema değişimi döngünün kendi renk okumasıyla zaten yakalanıyor
+    document.fonts?.ready.then(() => build());
   })();
 </script>
